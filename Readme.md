@@ -54,7 +54,7 @@ This Work has no affiliation, approval or endorsement by the author(s) of **Shar
 
 ## 💪 Contributing
 
-Your contribution is highly appreciated!. If you have any ideas, suggestions, or encounter issues, feel free to open an issue by clicking [here](https://github.com/ElektroStudios/PROJECT_NAME/issues/new/choose). 
+Your contribution is highly appreciated!. If you have any ideas, suggestions, or encounter issues, feel free to open an issue by clicking [here](https://github.com/ElektroStudios/SharpShell-Easy-Log/issues/new/choose). 
 
 Your input helps make this Work better for everyone. Thank you for your support! 🚀
 
