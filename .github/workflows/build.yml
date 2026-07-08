@@ -59,3 +59,4 @@ jobs:
           nuget restore "Source\${{ env.SOLUTION_NAME }}.${{ env.SOLUTION_EXT }}"
           msbuild "Source\${{ env.SOLUTION_NAME }}.${{ env.SOLUTION_EXT }}" /p:Configuration=Release /p:GenerateResourceUsePreserializedResources=true
           & "${{ runner.temp }}\scanner\dotnet-sonarscanner" end /d:sonar.token="$env:SONAR_TOKEN"
+          
