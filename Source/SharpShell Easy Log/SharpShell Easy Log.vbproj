@@ -12,7 +12,7 @@
     <AssemblyName>SharpShell Easy Log</AssemblyName>
     <FileAlignment>512</FileAlignment>
     <MyType>WindowsForms</MyType>
-    <TargetFrameworkVersion>v4.6</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
     <TargetFrameworkProfile />
   </PropertyGroup>
@@ -70,17 +70,10 @@
     <Import Include="System.ComponentModel" />
     <Import Include="System.Diagnostics" />
     <Import Include="System.Drawing" />
-    <Import Include="System.Globalization" />
     <Import Include="System.IO" />
-    <Import Include="System.Runtime.CompilerServices" />
-    <Import Include="System.Runtime.InteropServices" />
-    <Import Include="System.Security.Permissions" />
     <Import Include="System.Text" />
-    <Import Include="System.Threading" />
     <Import Include="System.Windows.Forms" />
     <Import Include="System.Linq" />
-    <Import Include="System.Xml.Linq" />
-    <Import Include="System.Threading.Tasks" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="FormMain.vb">
@@ -94,6 +87,7 @@
     <Compile Include="My Project\Application.Designer.vb">
       <AutoGen>True</AutoGen>
       <DependentUpon>Application.myapp</DependentUpon>
+      <DesignTime>True</DesignTime>
     </Compile>
     <Compile Include="My Project\Resources.Designer.vb">
       <AutoGen>True</AutoGen>

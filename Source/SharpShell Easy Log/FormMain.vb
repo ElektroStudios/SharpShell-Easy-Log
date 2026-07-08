@@ -9,6 +9,9 @@ Option Infer Off
 
 #Region " Imports "
 
+Imports System.Globalization
+Imports System.Threading
+
 Imports Microsoft.Win32
 
 #End Region
@@ -204,9 +207,7 @@ Public NotInheritable Class FormMain
     ''' ----------------------------------------------------------------------------------------------------
     Private Sub TextBoxLogFilePath_TextChanged(sender As Object, e As EventArgs) Handles TextBoxLogFilePath.TextChanged
 
-        If (Me.Watcher IsNot Nothing) Then
-            Me.Watcher.Dispose()
-        End If
+        Me.Watcher?.Dispose()
 
         Me.Watcher = New FileSystemWatcher() With {
             .Path = Path.GetDirectoryName(My.Settings.LogFilePath),
