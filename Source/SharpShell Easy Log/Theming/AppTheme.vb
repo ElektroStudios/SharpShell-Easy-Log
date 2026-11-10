@@ -10,11 +10,9 @@ Option Infer Off
 
 Namespace SharpShellEasyLog.Theming
 
-    ''' ----------------------------------------------------------------------------------------------------
     ''' <summary>
     ''' Specifies the visual theme of the application.
     ''' </summary>
-    ''' ----------------------------------------------------------------------------------------------------
     Public Enum AppTheme As Integer
 
         ''' <summary>

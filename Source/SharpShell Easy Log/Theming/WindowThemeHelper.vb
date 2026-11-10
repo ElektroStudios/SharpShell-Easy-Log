@@ -16,22 +16,18 @@ Imports System.Runtime.InteropServices
 
 Namespace SharpShellEasyLog.Theming
 
-    ''' ----------------------------------------------------------------------------------------------------
     ''' <summary>
     ''' Provides methods to apply dark or light rendering to native window parts that
     ''' cannot be customized through Windows Forms properties
     ''' (the title bar of a window, and the scroll bars of a control).
     ''' </summary>
-    ''' ----------------------------------------------------------------------------------------------------
     Public NotInheritable Class WindowThemeHelper
 
 #Region " Constructors "
 
-        ''' ----------------------------------------------------------------------------------------------------
         ''' <summary>
         ''' Prevents a default instance of the <see cref="WindowThemeHelper"/> class from being created.
         ''' </summary>
-        ''' ----------------------------------------------------------------------------------------------------
         <DebuggerNonUserCode>
         Private Sub New()
         End Sub
@@ -40,7 +36,6 @@ Namespace SharpShellEasyLog.Theming
 
 #Region " Public Methods "
 
-        ''' ----------------------------------------------------------------------------------------------------
         ''' <summary>
         ''' Enables or disables the dark mode of the title bar of the specified window,
         ''' by calling the <c>DwmSetWindowAttribute</c> function with the
@@ -49,31 +44,25 @@ Namespace SharpShellEasyLog.Theming
         ''' For a <see cref="Form"/>, call this method from an override of <see cref="Form.OnHandleCreated"/>:
         ''' calling it from the <see cref="Form.Load"/> event has no visible effect on the first paint.
         ''' </summary>
-        ''' ----------------------------------------------------------------------------------------------------
         ''' <param name="hwnd">
         ''' The window handle.
         ''' </param>
-        ''' ----------------------------------------------------------------------------------------------------
         ''' <param name="enable">
         ''' <see langword="True"/> to enable the dark title bar; <see langword="False"/> to restore the default light title bar.
         ''' </param>
-        ''' ----------------------------------------------------------------------------------------------------
         ''' <param name="redrawNonClientArea">
         ''' <see langword="True"/> to force an immediate redraw of the title bar.
         ''' Use it when the window is already visible; otherwise the title bar keeps its
         ''' previous colors until the next activation change.
         ''' </param>
-        ''' ----------------------------------------------------------------------------------------------------
         ''' <returns>
         ''' <see langword="True"/> if the attribute was applied;
         ''' <see langword="False"/> if the operating system does not support it
         ''' (Windows versions older than Windows 10 version 1809).
         ''' </returns>
-        ''' ----------------------------------------------------------------------------------------------------
         ''' <exception cref="ArgumentException">
         ''' Thrown when <paramref name="hwnd"/> is <see cref="IntPtr.Zero"/>.
         ''' </exception>
-        ''' ----------------------------------------------------------------------------------------------------
         <DebuggerStepperBoundary>
         Public Shared Function SetDarkTitleBar(hwnd As IntPtr, enable As Boolean, redrawNonClientArea As Boolean) As Boolean
 
@@ -114,30 +103,24 @@ Namespace SharpShellEasyLog.Theming
 
         End Function
 
-        ''' ----------------------------------------------------------------------------------------------------
         ''' <summary>
         ''' Applies the dark or the light "Explorer" visual style to the specified window,
         ''' which affects the rendering of its scroll bars.
         ''' </summary>
-        ''' ----------------------------------------------------------------------------------------------------
         ''' <param name="hwnd">
         ''' The window handle.
         ''' </param>
-        ''' ----------------------------------------------------------------------------------------------------
         ''' <param name="dark">
         ''' <see langword="True"/> to apply the dark visual style (<c>DarkMode_Explorer</c>);
         ''' <see langword="False"/> to apply the light visual style (<c>Explorer</c>).
         ''' </param>
-        ''' ----------------------------------------------------------------------------------------------------
         ''' <returns>
         ''' <see langword="True"/> if the visual style was applied;
         ''' <see langword="False"/> if the operating system does not support it.
         ''' </returns>
-        ''' ----------------------------------------------------------------------------------------------------
         ''' <exception cref="ArgumentException">
         ''' Thrown when <paramref name="hwnd"/> is <see cref="IntPtr.Zero"/>.
         ''' </exception>
-        ''' ----------------------------------------------------------------------------------------------------
         <DebuggerStepperBoundary>
         Public Shared Function SetScrollBarsTheme(hwnd As IntPtr, dark As Boolean) As Boolean
 
@@ -165,7 +148,6 @@ Namespace SharpShellEasyLog.Theming
 
 #Region " Private Methods "
 
-        ''' ----------------------------------------------------------------------------------------------------
         ''' <summary>
         ''' Determines whether the current operating system is Windows NT based.
         ''' <para></para>
@@ -173,11 +155,9 @@ Namespace SharpShellEasyLog.Theming
         ''' the compatibility section of the host application manifest, so the native functions are called
         ''' directly and their result is evaluated instead.
         ''' </summary>
-        ''' ----------------------------------------------------------------------------------------------------
         ''' <returns>
         ''' <see langword="True"/> if the current operating system is Windows NT based; otherwise, <see langword="False"/>.
         ''' </returns>
-        ''' ----------------------------------------------------------------------------------------------------
         <DebuggerStepThrough>
         Private Shared Function IsWindowsNT() As Boolean
 
@@ -185,15 +165,12 @@ Namespace SharpShellEasyLog.Theming
 
         End Function
 
-        ''' ----------------------------------------------------------------------------------------------------
         ''' <summary>
         ''' Forces the immediate redraw of the non-client area (title bar and borders) of the specified window.
         ''' </summary>
-        ''' ----------------------------------------------------------------------------------------------------
         ''' <param name="hwnd">
         ''' The window handle.
         ''' </param>
-        ''' ----------------------------------------------------------------------------------------------------
         <DebuggerStepperBoundary>
         Private Shared Sub RedrawNonClientArea(hwnd As IntPtr)
 

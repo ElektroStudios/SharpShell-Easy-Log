@@ -16,14 +16,12 @@ Imports System.ComponentModel
 
 Namespace SharpShellEasyLog.Core
 
-    ''' ----------------------------------------------------------------------------------------------------
     ''' <summary>
     ''' Specifies the logging modes supported by SharpShell.
     ''' <para></para>
     ''' The numeric values match the <c>LoggingMode</c> DWORD value that SharpShell reads from
     ''' the <c>HKLM\SOFTWARE\SharpShell</c> registry key.
     ''' </summary>
-    ''' ----------------------------------------------------------------------------------------------------
     <Flags>
     Public Enum SharpShellLoggingMode As Integer
 

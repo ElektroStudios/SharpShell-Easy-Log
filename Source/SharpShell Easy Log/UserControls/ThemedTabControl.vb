@@ -16,7 +16,6 @@ Imports SharpShellEasyLog.Theming
 
 Namespace SharpShellEasyLog.UserControls
 
-    ''' ----------------------------------------------------------------------------------------------------
     ''' <summary>
     ''' A <see cref="TabControl"/> that paints its tab headers and its border using the colors of a <see cref="ThemePalette"/>.
     ''' <para></para>
@@ -27,40 +26,33 @@ Namespace SharpShellEasyLog.UserControls
     ''' Custom painting is only supported for <see cref="TabAlignment.Top"/> and <see cref="TabAppearance.Normal"/>;
     ''' other layouts always use the native rendering.
     ''' </summary>
-    ''' ----------------------------------------------------------------------------------------------------
     <DesignerCategory("Code")>
     <ToolboxBitmap(GetType(TabControl))>
     Public Class ThemedTabControl : Inherits TabControl : Implements IThemeableControl
 
 #Region " Private Fields "
 
-        ''' ----------------------------------------------------------------------------------------------------
         ''' <summary>
         ''' The index of the tab header under the mouse pointer, or <c>-1</c> if none.
         ''' </summary>
-        ''' ----------------------------------------------------------------------------------------------------
         Private hotTabIndex As Integer = -1
 
 #End Region
 
 #Region " Properties "
 
-        ''' ----------------------------------------------------------------------------------------------------
         ''' <summary>
         ''' Gets the palette currently applied to the control,
         ''' or <see langword="Nothing"/> if no palette was applied yet.
         ''' </summary>
-        ''' ----------------------------------------------------------------------------------------------------
         <Browsable(False)>
         <DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)>
         Public ReadOnly Property Palette As ThemePalette Implements IThemeableControl.Palette
 
-        ''' ----------------------------------------------------------------------------------------------------
         ''' <summary>
         ''' Gets a value indicating whether the control is currently owner-drawn
         ''' (that is, a dark palette is applied and the tab layout supports custom painting).
         ''' </summary>
-        ''' ----------------------------------------------------------------------------------------------------
         <Browsable(False)>
         <DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)>
         Public ReadOnly Property IsOwnerDrawn As Boolean
@@ -74,11 +66,9 @@ Namespace SharpShellEasyLog.UserControls
 
 #Region " Constructors "
 
-        ''' ----------------------------------------------------------------------------------------------------
         ''' <summary>
         ''' Initializes a new instance of the <see cref="ThemedTabControl"/> class.
         ''' </summary>
-        ''' ----------------------------------------------------------------------------------------------------
         <DebuggerNonUserCode>
         Public Sub New()
 
@@ -90,22 +80,18 @@ Namespace SharpShellEasyLog.UserControls
 
 #Region " Public Methods "
 
-        ''' ----------------------------------------------------------------------------------------------------
         ''' <summary>
         ''' Applies the specified palette to the control.
         ''' <para></para>
         ''' The tab pages are not themed by this method;
         ''' use <see cref="ThemeManager.ApplyTheme(Control, ThemePalette)"/> to theme the whole control tree.
         ''' </summary>
-        ''' ----------------------------------------------------------------------------------------------------
         ''' <param name="palette">
         ''' The palette to apply.
         ''' </param>
-        ''' ----------------------------------------------------------------------------------------------------
         ''' <exception cref="ArgumentNullException">
         ''' Thrown when <paramref name="palette"/> is <see langword="Nothing"/>.
         ''' </exception>
-        ''' ----------------------------------------------------------------------------------------------------
         <DebuggerStepperBoundary>
         Public Sub ApplyTheme(palette As ThemePalette) Implements IThemeableControl.ApplyTheme
 
@@ -122,15 +108,12 @@ Namespace SharpShellEasyLog.UserControls
 
 #Region " Overridden Methods "
 
-        ''' ----------------------------------------------------------------------------------------------------
         ''' <summary>
         ''' Raises the <see cref="Control.Paint"/> event.
         ''' </summary>
-        ''' ----------------------------------------------------------------------------------------------------
         ''' <param name="e">
         ''' A <see cref="PaintEventArgs"/> that contains the event data.
         ''' </param>
-        ''' ----------------------------------------------------------------------------------------------------
         Protected Overrides Sub OnPaint(e As PaintEventArgs)
 
             If Not Me.IsOwnerDrawn Then
@@ -168,15 +151,12 @@ Namespace SharpShellEasyLog.UserControls
 
         End Sub
 
-        ''' ----------------------------------------------------------------------------------------------------
         ''' <summary>
         ''' Raises the <see cref="Control.MouseMove"/> event.
         ''' </summary>
-        ''' ----------------------------------------------------------------------------------------------------
         ''' <param name="e">
         ''' A <see cref="MouseEventArgs"/> that contains the event data.
         ''' </param>
-        ''' ----------------------------------------------------------------------------------------------------
         Protected Overrides Sub OnMouseMove(e As MouseEventArgs)
 
             MyBase.OnMouseMove(e)
@@ -198,15 +178,12 @@ Namespace SharpShellEasyLog.UserControls
 
         End Sub
 
-        ''' ----------------------------------------------------------------------------------------------------
         ''' <summary>
         ''' Raises the <see cref="Control.MouseLeave"/> event.
         ''' </summary>
-        ''' ----------------------------------------------------------------------------------------------------
         ''' <param name="e">
         ''' An <see cref="EventArgs"/> that contains the event data.
         ''' </param>
-        ''' ----------------------------------------------------------------------------------------------------
         Protected Overrides Sub OnMouseLeave(e As EventArgs)
 
             MyBase.OnMouseLeave(e)
@@ -220,15 +197,12 @@ Namespace SharpShellEasyLog.UserControls
 
         End Sub
 
-        ''' ----------------------------------------------------------------------------------------------------
         ''' <summary>
         ''' Raises the <see cref="TabControl.SelectedIndexChanged"/> event.
         ''' </summary>
-        ''' ----------------------------------------------------------------------------------------------------
         ''' <param name="e">
         ''' An <see cref="EventArgs"/> that contains the event data.
         ''' </param>
-        ''' ----------------------------------------------------------------------------------------------------
         Protected Overrides Sub OnSelectedIndexChanged(e As EventArgs)
 
             MyBase.OnSelectedIndexChanged(e)
@@ -239,15 +213,12 @@ Namespace SharpShellEasyLog.UserControls
 
         End Sub
 
-        ''' ----------------------------------------------------------------------------------------------------
         ''' <summary>
         ''' Raises the <see cref="Control.GotFocus"/> event.
         ''' </summary>
-        ''' ----------------------------------------------------------------------------------------------------
         ''' <param name="e">
         ''' An <see cref="EventArgs"/> that contains the event data.
         ''' </param>
-        ''' ----------------------------------------------------------------------------------------------------
         Protected Overrides Sub OnGotFocus(e As EventArgs)
 
             MyBase.OnGotFocus(e)
@@ -258,15 +229,12 @@ Namespace SharpShellEasyLog.UserControls
 
         End Sub
 
-        ''' ----------------------------------------------------------------------------------------------------
         ''' <summary>
         ''' Raises the <see cref="Control.LostFocus"/> event.
         ''' </summary>
-        ''' ----------------------------------------------------------------------------------------------------
         ''' <param name="e">
         ''' An <see cref="EventArgs"/> that contains the event data.
         ''' </param>
-        ''' ----------------------------------------------------------------------------------------------------
         Protected Overrides Sub OnLostFocus(e As EventArgs)
 
             MyBase.OnLostFocus(e)
@@ -281,11 +249,9 @@ Namespace SharpShellEasyLog.UserControls
 
 #Region " Private Methods "
 
-        ''' ----------------------------------------------------------------------------------------------------
         ''' <summary>
         ''' Enables or disables the owner-draw control styles, according to the current palette and tab layout.
         ''' </summary>
-        ''' ----------------------------------------------------------------------------------------------------
         <DebuggerStepperBoundary>
         Private Sub UpdateOwnerDrawStyle()
 
@@ -301,23 +267,18 @@ Namespace SharpShellEasyLog.UserControls
 
         End Sub
 
-        ''' ----------------------------------------------------------------------------------------------------
         ''' <summary>
         ''' Paints the header of the specified tab.
         ''' </summary>
-        ''' ----------------------------------------------------------------------------------------------------
         ''' <param name="g">
         ''' The graphics surface.
         ''' </param>
-        ''' ----------------------------------------------------------------------------------------------------
         ''' <param name="index">
         ''' The tab index.
         ''' </param>
-        ''' ----------------------------------------------------------------------------------------------------
         ''' <param name="isSelected">
         ''' A value indicating whether the tab is the selected tab.
         ''' </param>
-        ''' ----------------------------------------------------------------------------------------------------
         <DebuggerStepperBoundary>
         Private Sub PaintTabHeader(g As Graphics, index As Integer, isSelected As Boolean)
 

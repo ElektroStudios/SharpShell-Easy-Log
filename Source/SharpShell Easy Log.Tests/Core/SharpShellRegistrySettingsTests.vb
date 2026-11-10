@@ -19,14 +19,12 @@ Imports SharpShellEasyLog.Tests.Helpers
 
 Namespace SharpShellEasyLog.Tests.Core
 
-    ''' ----------------------------------------------------------------------------------------------------
     ''' <summary>
     ''' Tests for <see cref="SharpShellRegistrySettings"/>.
     ''' <para></para>
     ''' The tests use an isolated key under <c>HKEY_CURRENT_USER</c>,
     ''' so they never modify the real SharpShell configuration in <c>HKEY_LOCAL_MACHINE</c>.
     ''' </summary>
-    ''' ----------------------------------------------------------------------------------------------------
     <TestClass>
     Public NotInheritable Class SharpShellRegistrySettingsTests
 

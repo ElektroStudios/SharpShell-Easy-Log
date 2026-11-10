@@ -18,13 +18,11 @@ Imports SharpShellEasyLog.Theming
 
 Namespace SharpShellEasyLog.UserControls
 
-    ''' ----------------------------------------------------------------------------------------------------
     ''' <summary>
     ''' An on/off toggle switch control, similar to the toggle switches of the Windows settings.
     ''' <para></para>
     ''' The control is toggled with a mouse click, or with the <see cref="Keys.Space"/> or <see cref="Keys.Enter"/> keys.
     ''' </summary>
-    ''' ----------------------------------------------------------------------------------------------------
     <DesignerCategory("Code")>
     <DefaultEvent(NameOf(ToggleSwitch.CheckedChanged))>
     <DefaultProperty(NameOf(ToggleSwitch.Checked))>
@@ -33,22 +31,18 @@ Namespace SharpShellEasyLog.UserControls
 
 #Region " Private Fields "
 
-        ''' ----------------------------------------------------------------------------------------------------
         ''' <summary>
         ''' A value indicating whether the mouse pointer is over the control.
         ''' </summary>
-        ''' ----------------------------------------------------------------------------------------------------
         Private isHovered As Boolean
 
 #End Region
 
 #Region " Events "
 
-        ''' ----------------------------------------------------------------------------------------------------
         ''' <summary>
         ''' Occurs when the value of the <see cref="ToggleSwitch.Checked"/> property changes.
         ''' </summary>
-        ''' ----------------------------------------------------------------------------------------------------
         <Category("Action")>
         <Description("Occurs when the value of the Checked property changes.")>
         Public Event CheckedChanged As EventHandler
@@ -57,11 +51,9 @@ Namespace SharpShellEasyLog.UserControls
 
 #Region " Properties "
 
-        ''' ----------------------------------------------------------------------------------------------------
         ''' <summary>
         ''' Gets or sets a value indicating whether the switch is in the on state.
         ''' </summary>
-        ''' ----------------------------------------------------------------------------------------------------
         <Category("Appearance")>
         <DefaultValue(False)>
         <Description("Indicates whether the switch is in the on state.")>
@@ -83,22 +75,18 @@ Namespace SharpShellEasyLog.UserControls
         ''' <summary>(Backing field) <see cref="ToggleSwitch.Checked"/></summary>
         Private checkedField As Boolean
 
-        ''' ----------------------------------------------------------------------------------------------------
         ''' <summary>
         ''' Gets the palette currently applied to the control.
         ''' <para></para>
         ''' The default value is <see cref="ThemePalette.Light"/>.
         ''' </summary>
-        ''' ----------------------------------------------------------------------------------------------------
         <Browsable(False)>
         <DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)>
         Public ReadOnly Property Palette As ThemePalette = ThemePalette.Light Implements IThemeableControl.Palette
 
-        ''' ----------------------------------------------------------------------------------------------------
         ''' <summary>
         ''' Gets the default size of the control.
         ''' </summary>
-        ''' ----------------------------------------------------------------------------------------------------
         Protected Overrides ReadOnly Property DefaultSize As Size
             <DebuggerStepThrough>
             Get
@@ -110,11 +98,9 @@ Namespace SharpShellEasyLog.UserControls
 
 #Region " Constructors "
 
-        ''' ----------------------------------------------------------------------------------------------------
         ''' <summary>
         ''' Initializes a new instance of the <see cref="ToggleSwitch"/> class.
         ''' </summary>
-        ''' ----------------------------------------------------------------------------------------------------
         <DebuggerNonUserCode>
         Public Sub New()
 
@@ -141,11 +127,9 @@ Namespace SharpShellEasyLog.UserControls
 
 #Region " Public Methods "
 
-        ''' ----------------------------------------------------------------------------------------------------
         ''' <summary>
         ''' Toggles the value of the <see cref="ToggleSwitch.Checked"/> property.
         ''' </summary>
-        ''' ----------------------------------------------------------------------------------------------------
         <DebuggerStepThrough>
         Public Sub Toggle()
 
@@ -153,19 +137,15 @@ Namespace SharpShellEasyLog.UserControls
 
         End Sub
 
-        ''' ----------------------------------------------------------------------------------------------------
         ''' <summary>
         ''' Applies the specified palette to the control.
         ''' </summary>
-        ''' ----------------------------------------------------------------------------------------------------
         ''' <param name="palette">
         ''' The palette to apply.
         ''' </param>
-        ''' ----------------------------------------------------------------------------------------------------
         ''' <exception cref="ArgumentNullException">
         ''' Thrown when <paramref name="palette"/> is <see langword="Nothing"/>.
         ''' </exception>
-        ''' ----------------------------------------------------------------------------------------------------
         <DebuggerStepperBoundary>
         Public Sub ApplyTheme(palette As ThemePalette) Implements IThemeableControl.ApplyTheme
 
@@ -182,15 +162,12 @@ Namespace SharpShellEasyLog.UserControls
 
 #Region " Protected Methods "
 
-        ''' ----------------------------------------------------------------------------------------------------
         ''' <summary>
         ''' Raises the <see cref="ToggleSwitch.CheckedChanged"/> event.
         ''' </summary>
-        ''' ----------------------------------------------------------------------------------------------------
         ''' <param name="e">
         ''' An <see cref="EventArgs"/> that contains the event data.
         ''' </param>
-        ''' ----------------------------------------------------------------------------------------------------
         Protected Overridable Sub OnCheckedChanged(e As EventArgs)
 
             RaiseEvent CheckedChanged(Me, e)
@@ -201,30 +178,24 @@ Namespace SharpShellEasyLog.UserControls
 
 #Region " Overridden Methods "
 
-        ''' ----------------------------------------------------------------------------------------------------
         ''' <summary>
         ''' Creates a new accessibility object for the control.
         ''' </summary>
-        ''' ----------------------------------------------------------------------------------------------------
         ''' <returns>
         ''' A new <see cref="AccessibleObject"/> for the control.
         ''' </returns>
-        ''' ----------------------------------------------------------------------------------------------------
         Protected Overrides Function CreateAccessibilityInstance() As AccessibleObject
 
             Return New ToggleSwitchAccessibleObject(Me)
 
         End Function
 
-        ''' ----------------------------------------------------------------------------------------------------
         ''' <summary>
         ''' Raises the <see cref="Control.Paint"/> event.
         ''' </summary>
-        ''' ----------------------------------------------------------------------------------------------------
         ''' <param name="e">
         ''' A <see cref="PaintEventArgs"/> that contains the event data.
         ''' </param>
-        ''' ----------------------------------------------------------------------------------------------------
         Protected Overrides Sub OnPaint(e As PaintEventArgs)
 
             MyBase.OnPaint(e)
@@ -273,15 +244,12 @@ Namespace SharpShellEasyLog.UserControls
 
         End Sub
 
-        ''' ----------------------------------------------------------------------------------------------------
         ''' <summary>
         ''' Raises the <see cref="Control.MouseClick"/> event.
         ''' </summary>
-        ''' ----------------------------------------------------------------------------------------------------
         ''' <param name="e">
         ''' A <see cref="MouseEventArgs"/> that contains the event data.
         ''' </param>
-        ''' ----------------------------------------------------------------------------------------------------
         Protected Overrides Sub OnMouseClick(e As MouseEventArgs)
 
             MyBase.OnMouseClick(e)
@@ -292,15 +260,12 @@ Namespace SharpShellEasyLog.UserControls
 
         End Sub
 
-        ''' ----------------------------------------------------------------------------------------------------
         ''' <summary>
         ''' Raises the <see cref="Control.KeyDown"/> event.
         ''' </summary>
-        ''' ----------------------------------------------------------------------------------------------------
         ''' <param name="e">
         ''' A <see cref="KeyEventArgs"/> that contains the event data.
         ''' </param>
-        ''' ----------------------------------------------------------------------------------------------------
         Protected Overrides Sub OnKeyDown(e As KeyEventArgs)
 
             MyBase.OnKeyDown(e)
@@ -316,15 +281,12 @@ Namespace SharpShellEasyLog.UserControls
 
         End Sub
 
-        ''' ----------------------------------------------------------------------------------------------------
         ''' <summary>
         ''' Raises the <see cref="Control.MouseEnter"/> event.
         ''' </summary>
-        ''' ----------------------------------------------------------------------------------------------------
         ''' <param name="e">
         ''' An <see cref="EventArgs"/> that contains the event data.
         ''' </param>
-        ''' ----------------------------------------------------------------------------------------------------
         Protected Overrides Sub OnMouseEnter(e As EventArgs)
 
             MyBase.OnMouseEnter(e)
@@ -333,15 +295,12 @@ Namespace SharpShellEasyLog.UserControls
 
         End Sub
 
-        ''' ----------------------------------------------------------------------------------------------------
         ''' <summary>
         ''' Raises the <see cref="Control.MouseLeave"/> event.
         ''' </summary>
-        ''' ----------------------------------------------------------------------------------------------------
         ''' <param name="e">
         ''' An <see cref="EventArgs"/> that contains the event data.
         ''' </param>
-        ''' ----------------------------------------------------------------------------------------------------
         Protected Overrides Sub OnMouseLeave(e As EventArgs)
 
             MyBase.OnMouseLeave(e)
@@ -350,15 +309,12 @@ Namespace SharpShellEasyLog.UserControls
 
         End Sub
 
-        ''' ----------------------------------------------------------------------------------------------------
         ''' <summary>
         ''' Raises the <see cref="Control.GotFocus"/> event.
         ''' </summary>
-        ''' ----------------------------------------------------------------------------------------------------
         ''' <param name="e">
         ''' An <see cref="EventArgs"/> that contains the event data.
         ''' </param>
-        ''' ----------------------------------------------------------------------------------------------------
         Protected Overrides Sub OnGotFocus(e As EventArgs)
 
             MyBase.OnGotFocus(e)
@@ -366,15 +322,12 @@ Namespace SharpShellEasyLog.UserControls
 
         End Sub
 
-        ''' ----------------------------------------------------------------------------------------------------
         ''' <summary>
         ''' Raises the <see cref="Control.LostFocus"/> event.
         ''' </summary>
-        ''' ----------------------------------------------------------------------------------------------------
         ''' <param name="e">
         ''' An <see cref="EventArgs"/> that contains the event data.
         ''' </param>
-        ''' ----------------------------------------------------------------------------------------------------
         Protected Overrides Sub OnLostFocus(e As EventArgs)
 
             MyBase.OnLostFocus(e)
@@ -382,15 +335,12 @@ Namespace SharpShellEasyLog.UserControls
 
         End Sub
 
-        ''' ----------------------------------------------------------------------------------------------------
         ''' <summary>
         ''' Raises the <see cref="Control.EnabledChanged"/> event.
         ''' </summary>
-        ''' ----------------------------------------------------------------------------------------------------
         ''' <param name="e">
         ''' An <see cref="EventArgs"/> that contains the event data.
         ''' </param>
-        ''' ----------------------------------------------------------------------------------------------------
         Protected Overrides Sub OnEnabledChanged(e As EventArgs)
 
             MyBase.OnEnabledChanged(e)
@@ -402,19 +352,15 @@ Namespace SharpShellEasyLog.UserControls
 
 #Region " Private Methods "
 
-        ''' ----------------------------------------------------------------------------------------------------
         ''' <summary>
         ''' Creates a pill-shaped (fully rounded rectangle) path that fits the specified rectangle.
         ''' </summary>
-        ''' ----------------------------------------------------------------------------------------------------
         ''' <param name="rect">
         ''' The bounding rectangle.
         ''' </param>
-        ''' ----------------------------------------------------------------------------------------------------
         ''' <returns>
         ''' The resulting <see cref="GraphicsPath"/>. The caller is responsible for disposing it.
         ''' </returns>
-        ''' ----------------------------------------------------------------------------------------------------
         <DebuggerStepThrough>
         Private Shared Function CreatePillPath(rect As RectangleF) As GraphicsPath
 
@@ -431,25 +377,20 @@ Namespace SharpShellEasyLog.UserControls
 
 #Region " ToggleSwitchAccessibleObject "
 
-        ''' ----------------------------------------------------------------------------------------------------
         ''' <summary>
         ''' Provides accessibility information (check button role and checked state) for a <see cref="ToggleSwitch"/>.
         ''' </summary>
-        ''' ----------------------------------------------------------------------------------------------------
         Private NotInheritable Class ToggleSwitchAccessibleObject : Inherits ControlAccessibleObject
 
             ''' <summary>The owner control.</summary>
             Private ReadOnly ownerToggle As ToggleSwitch
 
-            ''' ----------------------------------------------------------------------------------------------------
             ''' <summary>
             ''' Initializes a new instance of the <see cref="ToggleSwitchAccessibleObject"/> class.
             ''' </summary>
-            ''' ----------------------------------------------------------------------------------------------------
             ''' <param name="owner">
             ''' The owner control.
             ''' </param>
-            ''' ----------------------------------------------------------------------------------------------------
             <DebuggerStepThrough>
             Friend Sub New(owner As ToggleSwitch)
 

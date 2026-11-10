@@ -10,20 +10,16 @@ Option Infer Off
 
 Namespace SharpShellEasyLog.Theming
 
-    ''' ----------------------------------------------------------------------------------------------------
     ''' <summary>
     ''' Applies a <see cref="ThemePalette"/> to a tree of Windows Forms controls.
     ''' </summary>
-    ''' ----------------------------------------------------------------------------------------------------
     Public NotInheritable Class ThemeManager
 
 #Region " Constructors "
 
-        ''' ----------------------------------------------------------------------------------------------------
         ''' <summary>
         ''' Prevents a default instance of the <see cref="ThemeManager"/> class from being created.
         ''' </summary>
-        ''' ----------------------------------------------------------------------------------------------------
         <DebuggerNonUserCode>
         Private Sub New()
         End Sub
@@ -32,7 +28,6 @@ Namespace SharpShellEasyLog.Theming
 
 #Region " Public Methods "
 
-        ''' ----------------------------------------------------------------------------------------------------
         ''' <summary>
         ''' Applies the specified palette to the specified control and all its descendant controls.
         ''' <para></para>
@@ -40,19 +35,15 @@ Namespace SharpShellEasyLog.Theming
         ''' <para></para>
         ''' Applying <see cref="ThemePalette.Light"/> restores the default system appearance of the controls.
         ''' </summary>
-        ''' ----------------------------------------------------------------------------------------------------
         ''' <param name="root">
         ''' The root control (typically a <see cref="Form"/>).
         ''' </param>
-        ''' ----------------------------------------------------------------------------------------------------
         ''' <param name="palette">
         ''' The palette to apply.
         ''' </param>
-        ''' ----------------------------------------------------------------------------------------------------
         ''' <exception cref="ArgumentNullException">
         ''' Thrown when <paramref name="root"/> or <paramref name="palette"/> is <see langword="Nothing"/>.
         ''' </exception>
-        ''' ----------------------------------------------------------------------------------------------------
         <DebuggerStepperBoundary>
         Public Shared Sub ApplyTheme(root As Control, palette As ThemePalette)
 
@@ -92,24 +83,19 @@ Namespace SharpShellEasyLog.Theming
 
         End Sub
 
-        ''' ----------------------------------------------------------------------------------------------------
         ''' <summary>
         ''' Applies the specified palette to the specified tool strip (or menu strip),
         ''' including the drop-down menus of its items.
         ''' </summary>
-        ''' ----------------------------------------------------------------------------------------------------
         ''' <param name="toolStrip">
         ''' The tool strip.
         ''' </param>
-        ''' ----------------------------------------------------------------------------------------------------
         ''' <param name="palette">
         ''' The palette to apply.
         ''' </param>
-        ''' ----------------------------------------------------------------------------------------------------
         ''' <exception cref="ArgumentNullException">
         ''' Thrown when <paramref name="toolStrip"/> or <paramref name="palette"/> is <see langword="Nothing"/>.
         ''' </exception>
-        ''' ----------------------------------------------------------------------------------------------------
         <DebuggerStepperBoundary>
         Public Shared Sub ApplyTheme(toolStrip As ToolStrip, palette As ThemePalette)
 
@@ -163,19 +149,15 @@ Namespace SharpShellEasyLog.Theming
 
 #Region " Private Methods "
 
-        ''' ----------------------------------------------------------------------------------------------------
         ''' <summary>
         ''' Applies the specified palette to a single control (not to its children).
         ''' </summary>
-        ''' ----------------------------------------------------------------------------------------------------
         ''' <param name="ctrl">
         ''' The control.
         ''' </param>
-        ''' ----------------------------------------------------------------------------------------------------
         ''' <param name="palette">
         ''' The palette to apply.
         ''' </param>
-        ''' ----------------------------------------------------------------------------------------------------
         <DebuggerStepperBoundary>
         Private Shared Sub ApplyThemeToControl(ctrl As Control, palette As ThemePalette)
 
@@ -225,19 +207,15 @@ Namespace SharpShellEasyLog.Theming
 
         End Sub
 
-        ''' ----------------------------------------------------------------------------------------------------
         ''' <summary>
         ''' Applies the specified palette to a <see cref="TextBoxBase"/> control.
         ''' </summary>
-        ''' ----------------------------------------------------------------------------------------------------
         ''' <param name="textBox">
         ''' The text box.
         ''' </param>
-        ''' ----------------------------------------------------------------------------------------------------
         ''' <param name="palette">
         ''' The palette to apply.
         ''' </param>
-        ''' ----------------------------------------------------------------------------------------------------
         <DebuggerStepperBoundary>
         Private Shared Sub ApplyThemeToTextBox(textBox As TextBoxBase, palette As ThemePalette)
 
@@ -262,19 +240,15 @@ Namespace SharpShellEasyLog.Theming
 
         End Sub
 
-        ''' ----------------------------------------------------------------------------------------------------
         ''' <summary>
         ''' Applies the specified palette to a <see cref="Button"/> control.
         ''' </summary>
-        ''' ----------------------------------------------------------------------------------------------------
         ''' <param name="button">
         ''' The button.
         ''' </param>
-        ''' ----------------------------------------------------------------------------------------------------
         ''' <param name="palette">
         ''' The palette to apply.
         ''' </param>
-        ''' ----------------------------------------------------------------------------------------------------
         <DebuggerStepperBoundary>
         Friend Shared Sub ApplyThemeToButton(button As Button, palette As ThemePalette)
 
@@ -298,20 +272,16 @@ Namespace SharpShellEasyLog.Theming
 
         End Sub
 
-        ''' ----------------------------------------------------------------------------------------------------
         ''' <summary>
         ''' Handles the <see cref="Control.HandleCreated"/> event of multiline text boxes,
         ''' to apply the scroll bars theme that matches their current back color.
         ''' </summary>
-        ''' ----------------------------------------------------------------------------------------------------
         ''' <param name="sender">
         ''' The source of the event.
         ''' </param>
-        ''' ----------------------------------------------------------------------------------------------------
         ''' <param name="e">
         ''' The <see cref="EventArgs"/> instance containing the event data.
         ''' </param>
-        ''' ----------------------------------------------------------------------------------------------------
         Private Shared Sub TextBox_HandleCreated(sender As Object, e As EventArgs)
 
             Dim textBox As TextBoxBase = DirectCast(sender, TextBoxBase)

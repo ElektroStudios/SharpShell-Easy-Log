@@ -16,7 +16,6 @@ Imports Microsoft.Win32
 
 Namespace SharpShellEasyLog.Core
 
-    ''' ----------------------------------------------------------------------------------------------------
     ''' <summary>
     ''' Reads and writes the SharpShell logging configuration stored in the Windows registry.
     ''' <para></para>
@@ -27,41 +26,32 @@ Namespace SharpShellEasyLog.Core
     '''   <see cref="SharpShellLoggingMode.File"/> flag is set.</description></item>
     ''' </list>
     ''' </summary>
-    ''' ----------------------------------------------------------------------------------------------------
     Public NotInheritable Class SharpShellRegistrySettings
 
 #Region " Constants "
 
-        ''' ----------------------------------------------------------------------------------------------------
         ''' <summary>
         ''' The path of the SharpShell registry key, relative to <see cref="RegistryHive.LocalMachine"/>.
         ''' </summary>
-        ''' ----------------------------------------------------------------------------------------------------
         Public Const DefaultSubKeyPath As String = "SOFTWARE\SharpShell"
 
-        ''' ----------------------------------------------------------------------------------------------------
         ''' <summary>
         ''' The name of the registry value that holds the SharpShell logging mode.
         ''' </summary>
-        ''' ----------------------------------------------------------------------------------------------------
         Public Const LoggingModeValueName As String = "LoggingMode"
 
-        ''' ----------------------------------------------------------------------------------------------------
         ''' <summary>
         ''' The name of the registry value that holds the SharpShell log file path.
         ''' </summary>
-        ''' ----------------------------------------------------------------------------------------------------
         Public Const LogPathValueName As String = "LogPath"
 
 #End Region
 
 #Region " Constructors "
 
-        ''' ----------------------------------------------------------------------------------------------------
         ''' <summary>
         ''' Prevents a default instance of the <see cref="SharpShellRegistrySettings"/> class from being created.
         ''' </summary>
-        ''' ----------------------------------------------------------------------------------------------------
         <DebuggerNonUserCode>
         Private Sub New()
         End Sub
@@ -70,7 +60,6 @@ Namespace SharpShellEasyLog.Core
 
 #Region " Public Methods "
 
-        ''' ----------------------------------------------------------------------------------------------------
         ''' <summary>
         ''' Gets the registry views where the SharpShell configuration must be written.
         ''' <para></para>
@@ -78,15 +67,12 @@ Namespace SharpShellEasyLog.Core
         ''' (<c>WOW6432Node</c>), so both the 64-bit and the 32-bit registry views must be updated
         ''' for the configuration to take effect in 32-bit and 64-bit processes that host SharpShell servers.
         ''' </summary>
-        ''' ----------------------------------------------------------------------------------------------------
         ''' <param name="is64BitOperatingSystem">
         ''' A value indicating whether the operating system is 64-bit.
         ''' </param>
-        ''' ----------------------------------------------------------------------------------------------------
         ''' <returns>
         ''' The registry views to update.
         ''' </returns>
-        ''' ----------------------------------------------------------------------------------------------------
         <DebuggerStepThrough>
         Public Shared Function GetTargetRegistryViews(is64BitOperatingSystem As Boolean) As RegistryView()
 
@@ -98,27 +84,22 @@ Namespace SharpShellEasyLog.Core
 
         End Function
 
-        ''' ----------------------------------------------------------------------------------------------------
         ''' <summary>
         ''' Applies the specified SharpShell logging configuration to <c>HKLM\SOFTWARE\SharpShell</c>,
         ''' in every registry view returned by <see cref="GetTargetRegistryViews"/>.
         ''' <para></para>
         ''' This operation requires administrative privileges.
         ''' </summary>
-        ''' ----------------------------------------------------------------------------------------------------
         ''' <param name="mode">
         ''' The logging mode to apply.
         ''' </param>
-        ''' ----------------------------------------------------------------------------------------------------
         ''' <param name="logFilePath">
         ''' The log file path. It is only written when <paramref name="mode"/> includes
         ''' the <see cref="SharpShellLoggingMode.File"/> flag. Can be <see langword="Nothing"/> or empty.
         ''' </param>
-        ''' ----------------------------------------------------------------------------------------------------
         ''' <exception cref="UnauthorizedAccessException">
         ''' Thrown when the current process does not have administrative privileges.
         ''' </exception>
-        ''' ----------------------------------------------------------------------------------------------------
         <DebuggerStepperBoundary>
         Public Shared Sub ApplyToLocalMachine(mode As SharpShellLoggingMode, logFilePath As String)
 
@@ -130,43 +111,34 @@ Namespace SharpShellEasyLog.Core
 
         End Sub
 
-        ''' ----------------------------------------------------------------------------------------------------
         ''' <summary>
         ''' Applies the specified SharpShell logging configuration to the specified registry key.
         ''' </summary>
-        ''' ----------------------------------------------------------------------------------------------------
         ''' <param name="baseKey">
         ''' The base registry key (e.g. <c>HKEY_LOCAL_MACHINE</c>) where <paramref name="subKeyPath"/> is located.
         ''' </param>
-        ''' ----------------------------------------------------------------------------------------------------
         ''' <param name="subKeyPath">
         ''' The path of the SharpShell registry subkey, relative to <paramref name="baseKey"/>.
         ''' </param>
-        ''' ----------------------------------------------------------------------------------------------------
         ''' <param name="mode">
         ''' The logging mode to apply.
         ''' <para></para>
         ''' When the value is <see cref="SharpShellLoggingMode.Disabled"/>, the SharpShell values are removed,
         ''' and the subkey is deleted only if it becomes empty (values not owned by this application are preserved).
         ''' </param>
-        ''' ----------------------------------------------------------------------------------------------------
         ''' <param name="logFilePath">
         ''' The log file path. It is only written when <paramref name="mode"/> includes
         ''' the <see cref="SharpShellLoggingMode.File"/> flag. Can be <see langword="Nothing"/> or empty.
         ''' </param>
-        ''' ----------------------------------------------------------------------------------------------------
         ''' <exception cref="ArgumentNullException">
         ''' Thrown when <paramref name="baseKey"/> is <see langword="Nothing"/>.
         ''' </exception>
-        ''' ----------------------------------------------------------------------------------------------------
         ''' <exception cref="ArgumentException">
         ''' Thrown when <paramref name="subKeyPath"/> is <see langword="Nothing"/>, empty or white space.
         ''' </exception>
-        ''' ----------------------------------------------------------------------------------------------------
         ''' <exception cref="ArgumentOutOfRangeException">
         ''' Thrown when <paramref name="mode"/> is not a valid <see cref="SharpShellLoggingMode"/> value.
         ''' </exception>
-        ''' ----------------------------------------------------------------------------------------------------
         <DebuggerStepperBoundary>
         Public Shared Sub Apply(baseKey As RegistryKey, subKeyPath As String, mode As SharpShellLoggingMode, logFilePath As String)
 
@@ -194,28 +166,22 @@ Namespace SharpShellEasyLog.Core
 
         End Sub
 
-        ''' ----------------------------------------------------------------------------------------------------
         ''' <summary>
         ''' Removes the SharpShell logging values from the specified registry key,
         ''' and deletes the key if it becomes empty.
         ''' </summary>
-        ''' ----------------------------------------------------------------------------------------------------
         ''' <param name="baseKey">
         ''' The base registry key where <paramref name="subKeyPath"/> is located.
         ''' </param>
-        ''' ----------------------------------------------------------------------------------------------------
         ''' <param name="subKeyPath">
         ''' The path of the SharpShell registry subkey, relative to <paramref name="baseKey"/>.
         ''' </param>
-        ''' ----------------------------------------------------------------------------------------------------
         ''' <exception cref="ArgumentNullException">
         ''' Thrown when <paramref name="baseKey"/> is <see langword="Nothing"/>.
         ''' </exception>
-        ''' ----------------------------------------------------------------------------------------------------
         ''' <exception cref="ArgumentException">
         ''' Thrown when <paramref name="subKeyPath"/> is <see langword="Nothing"/>, empty or white space.
         ''' </exception>
-        ''' ----------------------------------------------------------------------------------------------------
         <DebuggerStepperBoundary>
         Public Shared Sub Remove(baseKey As RegistryKey, subKeyPath As String)
 
@@ -240,36 +206,28 @@ Namespace SharpShellEasyLog.Core
 
         End Sub
 
-        ''' ----------------------------------------------------------------------------------------------------
         ''' <summary>
         ''' Reads the SharpShell logging mode from the specified registry key.
         ''' </summary>
-        ''' ----------------------------------------------------------------------------------------------------
         ''' <param name="baseKey">
         ''' The base registry key where <paramref name="subKeyPath"/> is located.
         ''' </param>
-        ''' ----------------------------------------------------------------------------------------------------
         ''' <param name="subKeyPath">
         ''' The path of the SharpShell registry subkey, relative to <paramref name="baseKey"/>.
         ''' </param>
-        ''' ----------------------------------------------------------------------------------------------------
         ''' <returns>
         ''' The stored <see cref="SharpShellLoggingMode"/>,
         ''' or <see cref="SharpShellLoggingMode.Disabled"/> if the key or the value does not exist.
         ''' </returns>
-        ''' ----------------------------------------------------------------------------------------------------
         ''' <exception cref="ArgumentNullException">
         ''' Thrown when <paramref name="baseKey"/> is <see langword="Nothing"/>.
         ''' </exception>
-        ''' ----------------------------------------------------------------------------------------------------
         ''' <exception cref="ArgumentException">
         ''' Thrown when <paramref name="subKeyPath"/> is <see langword="Nothing"/>, empty or white space.
         ''' </exception>
-        ''' ----------------------------------------------------------------------------------------------------
         ''' <exception cref="InvalidDataException">
         ''' Thrown when the stored value is not a DWORD, or it is not a valid <see cref="SharpShellLoggingMode"/> value.
         ''' </exception>
-        ''' ----------------------------------------------------------------------------------------------------
         <DebuggerStepperBoundary>
         Public Shared Function ReadLoggingMode(baseKey As RegistryKey, subKeyPath As String) As SharpShellLoggingMode
 
@@ -299,31 +257,24 @@ Namespace SharpShellEasyLog.Core
 
         End Function
 
-        ''' ----------------------------------------------------------------------------------------------------
         ''' <summary>
         ''' Reads the SharpShell log file path from the specified registry key.
         ''' </summary>
-        ''' ----------------------------------------------------------------------------------------------------
         ''' <param name="baseKey">
         ''' The base registry key where <paramref name="subKeyPath"/> is located.
         ''' </param>
-        ''' ----------------------------------------------------------------------------------------------------
         ''' <param name="subKeyPath">
         ''' The path of the SharpShell registry subkey, relative to <paramref name="baseKey"/>.
         ''' </param>
-        ''' ----------------------------------------------------------------------------------------------------
         ''' <returns>
         ''' The stored log file path, or <see langword="Nothing"/> if the key or the value does not exist.
         ''' </returns>
-        ''' ----------------------------------------------------------------------------------------------------
         ''' <exception cref="ArgumentNullException">
         ''' Thrown when <paramref name="baseKey"/> is <see langword="Nothing"/>.
         ''' </exception>
-        ''' ----------------------------------------------------------------------------------------------------
         ''' <exception cref="ArgumentException">
         ''' Thrown when <paramref name="subKeyPath"/> is <see langword="Nothing"/>, empty or white space.
         ''' </exception>
-        ''' ----------------------------------------------------------------------------------------------------
         <DebuggerStepperBoundary>
         Public Shared Function ReadLogPath(baseKey As RegistryKey, subKeyPath As String) As String
 
@@ -343,27 +294,21 @@ Namespace SharpShellEasyLog.Core
 
 #Region " Private Methods "
 
-        ''' ----------------------------------------------------------------------------------------------------
         ''' <summary>
         ''' Validates the registry key arguments shared by the public methods.
         ''' </summary>
-        ''' ----------------------------------------------------------------------------------------------------
         ''' <param name="baseKey">
         ''' The base registry key.
         ''' </param>
-        ''' ----------------------------------------------------------------------------------------------------
         ''' <param name="subKeyPath">
         ''' The subkey path.
         ''' </param>
-        ''' ----------------------------------------------------------------------------------------------------
         ''' <exception cref="ArgumentNullException">
         ''' Thrown when <paramref name="baseKey"/> is <see langword="Nothing"/>.
         ''' </exception>
-        ''' ----------------------------------------------------------------------------------------------------
         ''' <exception cref="ArgumentException">
         ''' Thrown when <paramref name="subKeyPath"/> is <see langword="Nothing"/>, empty or white space.
         ''' </exception>
-        ''' ----------------------------------------------------------------------------------------------------
         <DebuggerStepThrough>
         Private Shared Sub ValidateKeyArguments(baseKey As RegistryKey, subKeyPath As String)
 

@@ -16,11 +16,9 @@ Imports SharpShellEasyLog.Core
 
 Namespace SharpShellEasyLog.Tests.Core
 
-    ''' ----------------------------------------------------------------------------------------------------
     ''' <summary>
     ''' Tests for <see cref="SharpShellLoggingMode"/> and <see cref="SharpShellLoggingModeExtensions"/>.
     ''' </summary>
-    ''' ----------------------------------------------------------------------------------------------------
     <TestClass>
     Public NotInheritable Class SharpShellLoggingModeTests
 

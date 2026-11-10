@@ -19,11 +19,9 @@ Imports SharpShellEasyLog.Theming
 
 Namespace SharpShellEasyLog.Tests.Theming
 
-    ''' ----------------------------------------------------------------------------------------------------
     ''' <summary>
     ''' Tests for <see cref="ThemePalette"/>.
     ''' </summary>
-    ''' ----------------------------------------------------------------------------------------------------
     <TestClass>
     Public NotInheritable Class ThemePaletteTests
 

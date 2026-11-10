@@ -10,30 +10,24 @@ Option Infer Off
 
 Namespace SharpShellEasyLog.Theming
 
-    ''' ----------------------------------------------------------------------------------------------------
     ''' <summary>
     ''' Defines the set of colors used to paint the user interface for a specific <see cref="AppTheme"/>.
     ''' <para></para>
     ''' Use the <see cref="ThemePalette.Light"/> and <see cref="ThemePalette.Dark"/> shared instances,
     ''' or the <see cref="ThemePalette.FromTheme"/> method.
     ''' </summary>
-    ''' ----------------------------------------------------------------------------------------------------
     Public NotInheritable Class ThemePalette
 
 #Region " Shared Instances "
 
-        ''' ----------------------------------------------------------------------------------------------------
         ''' <summary>
         ''' Gets the light theme palette, based on the default Windows system colors.
         ''' </summary>
-        ''' ----------------------------------------------------------------------------------------------------
         Public Shared ReadOnly Property Light As ThemePalette = ThemePalette.CreateLightPalette()
 
-        ''' ----------------------------------------------------------------------------------------------------
         ''' <summary>
         ''' Gets the dark theme palette.
         ''' </summary>
-        ''' ----------------------------------------------------------------------------------------------------
         Public Shared ReadOnly Property Dark As ThemePalette = ThemePalette.CreateDarkPalette()
 
 #End Region
@@ -115,15 +109,12 @@ Namespace SharpShellEasyLog.Theming
 
 #Region " Constructors "
 
-        ''' ----------------------------------------------------------------------------------------------------
         ''' <summary>
         ''' Initializes a new instance of the <see cref="ThemePalette"/> class.
         ''' </summary>
-        ''' ----------------------------------------------------------------------------------------------------
         ''' <param name="theme">
         ''' The theme that this palette represents.
         ''' </param>
-        ''' ----------------------------------------------------------------------------------------------------
         <DebuggerNonUserCode>
         Private Sub New(theme As AppTheme)
 
@@ -135,23 +126,18 @@ Namespace SharpShellEasyLog.Theming
 
 #Region " Public Methods "
 
-        ''' ----------------------------------------------------------------------------------------------------
         ''' <summary>
         ''' Gets the palette for the specified theme.
         ''' </summary>
-        ''' ----------------------------------------------------------------------------------------------------
         ''' <param name="theme">
         ''' The theme.
         ''' </param>
-        ''' ----------------------------------------------------------------------------------------------------
         ''' <returns>
         ''' The <see cref="ThemePalette"/> for <paramref name="theme"/>.
         ''' </returns>
-        ''' ----------------------------------------------------------------------------------------------------
         ''' <exception cref="System.ComponentModel.InvalidEnumArgumentException">
         ''' Thrown when <paramref name="theme"/> is not a defined <see cref="AppTheme"/> value.
         ''' </exception>
-        ''' ----------------------------------------------------------------------------------------------------
         <DebuggerStepThrough>
         Public Shared Function FromTheme(theme As AppTheme) As ThemePalette
 
@@ -168,19 +154,15 @@ Namespace SharpShellEasyLog.Theming
 
         End Function
 
-        ''' ----------------------------------------------------------------------------------------------------
         ''' <summary>
         ''' Gets the relative luminance of the specified color, as defined by the WCAG 2.x specification.
         ''' </summary>
-        ''' ----------------------------------------------------------------------------------------------------
         ''' <param name="color">
         ''' The color.
         ''' </param>
-        ''' ----------------------------------------------------------------------------------------------------
         ''' <returns>
         ''' A value between <c>0.0</c> (darkest black) and <c>1.0</c> (lightest white).
         ''' </returns>
-        ''' ----------------------------------------------------------------------------------------------------
         <DebuggerStepThrough>
         Public Shared Function GetRelativeLuminance(color As Color) As Double
 
@@ -192,23 +174,18 @@ Namespace SharpShellEasyLog.Theming
 
         End Function
 
-        ''' ----------------------------------------------------------------------------------------------------
         ''' <summary>
         ''' Gets the contrast ratio between two colors, as defined by the WCAG 2.x specification.
         ''' </summary>
-        ''' ----------------------------------------------------------------------------------------------------
         ''' <param name="color1">
         ''' The first color.
         ''' </param>
-        ''' ----------------------------------------------------------------------------------------------------
         ''' <param name="color2">
         ''' The second color.
         ''' </param>
-        ''' ----------------------------------------------------------------------------------------------------
         ''' <returns>
         ''' A value between <c>1.0</c> (no contrast) and <c>21.0</c> (black on white).
         ''' </returns>
-        ''' ----------------------------------------------------------------------------------------------------
         <DebuggerStepThrough>
         Public Shared Function GetContrastRatio(color1 As Color, color2 As Color) As Double
 
@@ -219,20 +196,16 @@ Namespace SharpShellEasyLog.Theming
 
         End Function
 
-        ''' ----------------------------------------------------------------------------------------------------
         ''' <summary>
         ''' Determines whether the specified color is a dark color
         ''' (that is, white text is more readable than black text over it).
         ''' </summary>
-        ''' ----------------------------------------------------------------------------------------------------
         ''' <param name="color">
         ''' The color.
         ''' </param>
-        ''' ----------------------------------------------------------------------------------------------------
         ''' <returns>
         ''' <see langword="True"/> if <paramref name="color"/> is a dark color; otherwise, <see langword="False"/>.
         ''' </returns>
-        ''' ----------------------------------------------------------------------------------------------------
         <DebuggerStepThrough>
         Public Shared Function IsDarkColor(color As Color) As Boolean
 
@@ -240,15 +213,12 @@ Namespace SharpShellEasyLog.Theming
 
         End Function
 
-        ''' ----------------------------------------------------------------------------------------------------
         ''' <summary>
         ''' Returns a <see cref="String"/> that represents this palette.
         ''' </summary>
-        ''' ----------------------------------------------------------------------------------------------------
         ''' <returns>
         ''' A <see cref="String"/> that represents this palette.
         ''' </returns>
-        ''' ----------------------------------------------------------------------------------------------------
         <DebuggerStepThrough>
         Public Overrides Function ToString() As String
 
@@ -260,19 +230,15 @@ Namespace SharpShellEasyLog.Theming
 
 #Region " Private Methods "
 
-        ''' ----------------------------------------------------------------------------------------------------
         ''' <summary>
         ''' Converts a gamma-encoded sRGB channel value to its linear value.
         ''' </summary>
-        ''' ----------------------------------------------------------------------------------------------------
         ''' <param name="channel">
         ''' The 8-bit channel value.
         ''' </param>
-        ''' ----------------------------------------------------------------------------------------------------
         ''' <returns>
         ''' The linear channel value, between <c>0.0</c> and <c>1.0</c>.
         ''' </returns>
-        ''' ----------------------------------------------------------------------------------------------------
         <DebuggerStepThrough>
         Private Shared Function LinearizeChannel(channel As Byte) As Double
 
@@ -281,15 +247,12 @@ Namespace SharpShellEasyLog.Theming
 
         End Function
 
-        ''' ----------------------------------------------------------------------------------------------------
         ''' <summary>
         ''' Creates the light theme palette, based on the default Windows system colors.
         ''' </summary>
-        ''' ----------------------------------------------------------------------------------------------------
         ''' <returns>
         ''' The light theme palette.
         ''' </returns>
-        ''' ----------------------------------------------------------------------------------------------------
         <DebuggerStepThrough>
         Private Shared Function CreateLightPalette() As ThemePalette
 
@@ -318,15 +281,12 @@ Namespace SharpShellEasyLog.Theming
 
         End Function
 
-        ''' ----------------------------------------------------------------------------------------------------
         ''' <summary>
         ''' Creates the dark theme palette.
         ''' </summary>
-        ''' ----------------------------------------------------------------------------------------------------
         ''' <returns>
         ''' The dark theme palette.
         ''' </returns>
-        ''' ----------------------------------------------------------------------------------------------------
         <DebuggerStepThrough>
         Private Shared Function CreateDarkPalette() As ThemePalette
 

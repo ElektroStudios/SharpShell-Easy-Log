@@ -17,11 +17,9 @@ Imports SharpShellEasyLog.Tests.Helpers
 
 Namespace SharpShellEasyLog.Tests.Core
 
-    ''' ----------------------------------------------------------------------------------------------------
     ''' <summary>
     ''' Tests for <see cref="LogFileTailReader"/>.
     ''' </summary>
-    ''' ----------------------------------------------------------------------------------------------------
     <TestClass>
     Public NotInheritable Class LogFileTailReaderTests
 

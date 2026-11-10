@@ -16,12 +16,10 @@ Imports System.Windows.Forms.Design
 
 Namespace SharpShellEasyLog.UserControls
 
-    ''' ----------------------------------------------------------------------------------------------------
     ''' <summary>
     ''' A <see cref="ToolStripControlHost"/> that hosts a <see cref="UserControls.ToggleSwitch"/>,
     ''' so it can be placed in a <see cref="MenuStrip"/>, <see cref="ToolStrip"/> or <see cref="StatusStrip"/>.
     ''' </summary>
-    ''' ----------------------------------------------------------------------------------------------------
     <DesignerCategory("Code")>
     <DefaultEvent(NameOf(ToolStripToggleSwitch.CheckedChanged))>
     <DefaultProperty(NameOf(ToolStripToggleSwitch.Checked))>
@@ -32,11 +30,9 @@ Namespace SharpShellEasyLog.UserControls
 
 #Region " Events "
 
-        ''' ----------------------------------------------------------------------------------------------------
         ''' <summary>
         ''' Occurs when the value of the <see cref="ToolStripToggleSwitch.Checked"/> property changes.
         ''' </summary>
-        ''' ----------------------------------------------------------------------------------------------------
         <Category("Action")>
         <Description("Occurs when the value of the Checked property changes.")>
         Public Event CheckedChanged As EventHandler
@@ -45,11 +41,9 @@ Namespace SharpShellEasyLog.UserControls
 
 #Region " Properties "
 
-        ''' ----------------------------------------------------------------------------------------------------
         ''' <summary>
         ''' Gets the hosted <see cref="UserControls.ToggleSwitch"/> control.
         ''' </summary>
-        ''' ----------------------------------------------------------------------------------------------------
         <Browsable(False)>
         <DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)>
         Public ReadOnly Property ToggleSwitch As ToggleSwitch
@@ -59,11 +53,9 @@ Namespace SharpShellEasyLog.UserControls
             End Get
         End Property
 
-        ''' ----------------------------------------------------------------------------------------------------
         ''' <summary>
         ''' Gets or sets a value indicating whether the switch is in the on state.
         ''' </summary>
-        ''' ----------------------------------------------------------------------------------------------------
         <Category("Appearance")>
         <DefaultValue(False)>
         <Description("Indicates whether the switch is in the on state.")>
@@ -78,11 +70,9 @@ Namespace SharpShellEasyLog.UserControls
             End Set
         End Property
 
-        ''' ----------------------------------------------------------------------------------------------------
         ''' <summary>
         ''' Gets the default size of the item.
         ''' </summary>
-        ''' ----------------------------------------------------------------------------------------------------
         Protected Overrides ReadOnly Property DefaultSize As Size
             <DebuggerStepThrough>
             Get
@@ -90,11 +80,9 @@ Namespace SharpShellEasyLog.UserControls
             End Get
         End Property
 
-        ''' ----------------------------------------------------------------------------------------------------
         ''' <summary>
         ''' Gets the default margin of the item.
         ''' </summary>
-        ''' ----------------------------------------------------------------------------------------------------
         Protected Overrides ReadOnly Property DefaultMargin As Padding
             <DebuggerStepThrough>
             Get
@@ -106,11 +94,9 @@ Namespace SharpShellEasyLog.UserControls
 
 #Region " Constructors "
 
-        ''' ----------------------------------------------------------------------------------------------------
         ''' <summary>
         ''' Initializes a new instance of the <see cref="ToolStripToggleSwitch"/> class.
         ''' </summary>
-        ''' ----------------------------------------------------------------------------------------------------
         <DebuggerNonUserCode>
         Public Sub New()
 
@@ -124,15 +110,12 @@ Namespace SharpShellEasyLog.UserControls
 
 #Region " Protected Methods "
 
-        ''' ----------------------------------------------------------------------------------------------------
         ''' <summary>
         ''' Raises the <see cref="ToolStripToggleSwitch.CheckedChanged"/> event.
         ''' </summary>
-        ''' ----------------------------------------------------------------------------------------------------
         ''' <param name="e">
         ''' An <see cref="EventArgs"/> that contains the event data.
         ''' </param>
-        ''' ----------------------------------------------------------------------------------------------------
         Protected Overridable Sub OnCheckedChanged(e As EventArgs)
 
             RaiseEvent CheckedChanged(Me, e)
@@ -143,15 +126,12 @@ Namespace SharpShellEasyLog.UserControls
 
 #Region " Overridden Methods "
 
-        ''' ----------------------------------------------------------------------------------------------------
         ''' <summary>
         ''' Subscribes events from the hosted control.
         ''' </summary>
-        ''' ----------------------------------------------------------------------------------------------------
         ''' <param name="control">
         ''' The control from which to subscribe events.
         ''' </param>
-        ''' ----------------------------------------------------------------------------------------------------
         Protected Overrides Sub OnSubscribeControlEvents(control As Control)
 
             MyBase.OnSubscribeControlEvents(control)
@@ -159,15 +139,12 @@ Namespace SharpShellEasyLog.UserControls
 
         End Sub
 
-        ''' ----------------------------------------------------------------------------------------------------
         ''' <summary>
         ''' Unsubscribes events from the hosted control.
         ''' </summary>
-        ''' ----------------------------------------------------------------------------------------------------
         ''' <param name="control">
         ''' The control from which to unsubscribe events.
         ''' </param>
-        ''' ----------------------------------------------------------------------------------------------------
         Protected Overrides Sub OnUnsubscribeControlEvents(control As Control)
 
             MyBase.OnUnsubscribeControlEvents(control)
@@ -179,19 +156,15 @@ Namespace SharpShellEasyLog.UserControls
 
 #Region " Event Handlers "
 
-        ''' ----------------------------------------------------------------------------------------------------
         ''' <summary>
         ''' Handles the <see cref="UserControls.ToggleSwitch.CheckedChanged"/> event of the hosted control.
         ''' </summary>
-        ''' ----------------------------------------------------------------------------------------------------
         ''' <param name="sender">
         ''' The source of the event.
         ''' </param>
-        ''' ----------------------------------------------------------------------------------------------------
         ''' <param name="e">
         ''' The <see cref="EventArgs"/> instance containing the event data.
         ''' </param>
-        ''' ----------------------------------------------------------------------------------------------------
         Private Sub ToggleSwitch_CheckedChanged(sender As Object, e As EventArgs)
 
             Me.OnCheckedChanged(e)

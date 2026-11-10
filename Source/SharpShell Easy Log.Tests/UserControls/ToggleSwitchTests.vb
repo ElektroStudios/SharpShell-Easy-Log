@@ -17,11 +17,9 @@ Imports SharpShellEasyLog.UserControls
 
 Namespace SharpShellEasyLog.Tests.UserControls
 
-    ''' ----------------------------------------------------------------------------------------------------
     ''' <summary>
     ''' Tests for <see cref="ToggleSwitch"/> and <see cref="ToolStripToggleSwitch"/>.
     ''' </summary>
-    ''' ----------------------------------------------------------------------------------------------------
     <STATestClass>
     Public NotInheritable Class ToggleSwitchTests
 

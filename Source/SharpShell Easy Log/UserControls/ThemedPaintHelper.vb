@@ -10,20 +10,16 @@ Option Infer Off
 
 Namespace SharpShellEasyLog.UserControls
 
-    ''' ----------------------------------------------------------------------------------------------------
     ''' <summary>
     ''' Helper methods shared by the themed controls.
     ''' </summary>
-    ''' ----------------------------------------------------------------------------------------------------
     Friend NotInheritable Class ThemedPaintHelper
 
 #Region " Constructors "
 
-        ''' ----------------------------------------------------------------------------------------------------
         ''' <summary>
         ''' Prevents a default instance of the <see cref="ThemedPaintHelper"/> class from being created.
         ''' </summary>
-        ''' ----------------------------------------------------------------------------------------------------
         <DebuggerNonUserCode>
         Private Sub New()
         End Sub
@@ -32,35 +28,27 @@ Namespace SharpShellEasyLog.UserControls
 
 #Region " Friend Methods "
 
-        ''' ----------------------------------------------------------------------------------------------------
         ''' <summary>
         ''' Gets the <see cref="TextFormatFlags"/> that reproduce the specified text alignment and options.
         ''' </summary>
-        ''' ----------------------------------------------------------------------------------------------------
         ''' <param name="alignment">
         ''' The text alignment.
         ''' </param>
-        ''' ----------------------------------------------------------------------------------------------------
         ''' <param name="rightToLeft">
         ''' The right-to-left setting of the control.
         ''' </param>
-        ''' ----------------------------------------------------------------------------------------------------
         ''' <param name="useMnemonic">
         ''' A value indicating whether the ampersand character is interpreted as a mnemonic prefix.
         ''' </param>
-        ''' ----------------------------------------------------------------------------------------------------
         ''' <param name="showKeyboardCues">
         ''' A value indicating whether the keyboard cues (mnemonic underlines) are visible.
         ''' </param>
-        ''' ----------------------------------------------------------------------------------------------------
         ''' <param name="wordWrap">
         ''' A value indicating whether the text is wrapped into multiple lines.
         ''' </param>
-        ''' ----------------------------------------------------------------------------------------------------
         ''' <returns>
         ''' The resulting <see cref="TextFormatFlags"/>.
         ''' </returns>
-        ''' ----------------------------------------------------------------------------------------------------
         <DebuggerStepThrough>
         Friend Shared Function GetTextFormatFlags(alignment As ContentAlignment,
                                                   rightToLeft As RightToLeft,

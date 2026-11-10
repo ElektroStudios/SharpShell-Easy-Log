@@ -17,11 +17,9 @@ Imports System.Security
 
 Namespace SharpShellEasyLog.Theming
 
-    ''' ----------------------------------------------------------------------------------------------------
     ''' <summary>
     ''' Platform Invocation (P/Invoke) declarations used by the theming infrastructure.
     ''' </summary>
-    ''' ----------------------------------------------------------------------------------------------------
     <SuppressUnmanagedCodeSecurity>
     Friend NotInheritable Class NativeMethods
 
@@ -64,11 +62,9 @@ Namespace SharpShellEasyLog.Theming
 
 #Region " Constructors "
 
-        ''' ----------------------------------------------------------------------------------------------------
         ''' <summary>
         ''' Prevents a default instance of the <see cref="NativeMethods"/> class from being created.
         ''' </summary>
-        ''' ----------------------------------------------------------------------------------------------------
         <DebuggerNonUserCode>
         Private Sub New()
         End Sub
@@ -77,15 +73,12 @@ Namespace SharpShellEasyLog.Theming
 
 #Region " DwmApi.dll "
 
-        ''' ----------------------------------------------------------------------------------------------------
         ''' <summary>
         ''' Sets the value of Desktop Window Manager (DWM) non-client rendering attributes for a window.
         ''' </summary>
-        ''' ----------------------------------------------------------------------------------------------------
         ''' <remarks>
         ''' <see href="https://learn.microsoft.com/en-us/windows/win32/api/dwmapi/nf-dwmapi-dwmsetwindowattribute"/>
         ''' </remarks>
-        ''' ----------------------------------------------------------------------------------------------------
         <DllImport("DwmApi.dll", ExactSpelling:=True, PreserveSig:=True)>
         Friend Shared Function DwmSetWindowAttribute(hwnd As IntPtr,
                                                      dwAttribute As Integer,
@@ -98,15 +91,12 @@ Namespace SharpShellEasyLog.Theming
 
 #Region " UxTheme.dll "
 
-        ''' ----------------------------------------------------------------------------------------------------
         ''' <summary>
         ''' Causes a window to use a different set of visual style information than its class normally uses.
         ''' </summary>
-        ''' ----------------------------------------------------------------------------------------------------
         ''' <remarks>
         ''' <see href="https://learn.microsoft.com/en-us/windows/win32/api/uxtheme/nf-uxtheme-setwindowtheme"/>
         ''' </remarks>
-        ''' ----------------------------------------------------------------------------------------------------
         <DllImport("UxTheme.dll", ExactSpelling:=True, CharSet:=CharSet.Unicode, PreserveSig:=True)>
         Friend Shared Function SetWindowTheme(hwnd As IntPtr,
                                               pszSubAppName As String,
@@ -118,15 +108,12 @@ Namespace SharpShellEasyLog.Theming
 
 #Region " User32.dll "
 
-        ''' ----------------------------------------------------------------------------------------------------
         ''' <summary>
         ''' Changes the size, position, and Z order of a window.
         ''' </summary>
-        ''' ----------------------------------------------------------------------------------------------------
         ''' <remarks>
         ''' <see href="https://learn.microsoft.com/en-us/windows/win32/api/winuser/nf-winuser-setwindowpos"/>
         ''' </remarks>
-        ''' ----------------------------------------------------------------------------------------------------
         <DllImport("User32.dll", ExactSpelling:=True, SetLastError:=True)>
         Friend Shared Function SetWindowPos(hWnd As IntPtr,
                                             hWndInsertAfter As IntPtr,
@@ -138,15 +125,12 @@ Namespace SharpShellEasyLog.Theming
         ) As <MarshalAs(UnmanagedType.Bool)> Boolean
         End Function
 
-        ''' ----------------------------------------------------------------------------------------------------
         ''' <summary>
         ''' Sends the specified message to a window.
         ''' </summary>
-        ''' ----------------------------------------------------------------------------------------------------
         ''' <remarks>
         ''' <see href="https://learn.microsoft.com/en-us/windows/win32/api/winuser/nf-winuser-sendmessagew"/>
         ''' </remarks>
-        ''' ----------------------------------------------------------------------------------------------------
         <DllImport("User32.dll", EntryPoint:="SendMessageW", ExactSpelling:=True)>
         Friend Shared Function SendMessage(hWnd As IntPtr,
                                            msg As Integer,
@@ -155,15 +139,12 @@ Namespace SharpShellEasyLog.Theming
         ) As IntPtr
         End Function
 
-        ''' ----------------------------------------------------------------------------------------------------
         ''' <summary>
         ''' Retrieves a handle to the foreground window (the window with which the user is currently working).
         ''' </summary>
-        ''' ----------------------------------------------------------------------------------------------------
         ''' <remarks>
         ''' <see href="https://learn.microsoft.com/en-us/windows/win32/api/winuser/nf-winuser-getforegroundwindow"/>
         ''' </remarks>
-        ''' ----------------------------------------------------------------------------------------------------
         <DllImport("User32.dll", ExactSpelling:=True)>
         Friend Shared Function GetForegroundWindow() As IntPtr
         End Function

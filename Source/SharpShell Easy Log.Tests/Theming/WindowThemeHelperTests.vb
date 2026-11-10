@@ -16,11 +16,9 @@ Imports SharpShellEasyLog.Theming
 
 Namespace SharpShellEasyLog.Tests.Theming
 
-    ''' ----------------------------------------------------------------------------------------------------
     ''' <summary>
     ''' Tests for <see cref="WindowThemeHelper"/>.
     ''' </summary>
-    ''' ----------------------------------------------------------------------------------------------------
     <STATestClass>
     Public NotInheritable Class WindowThemeHelperTests
 

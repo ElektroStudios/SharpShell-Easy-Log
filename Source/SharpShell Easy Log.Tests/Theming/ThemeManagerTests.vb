@@ -17,11 +17,9 @@ Imports SharpShellEasyLog.UserControls
 
 Namespace SharpShellEasyLog.Tests.Theming
 
-    ''' ----------------------------------------------------------------------------------------------------
     ''' <summary>
     ''' Tests for <see cref="ThemeManager"/>.
     ''' </summary>
-    ''' ----------------------------------------------------------------------------------------------------
     <STATestClass>
     Public NotInheritable Class ThemeManagerTests
 

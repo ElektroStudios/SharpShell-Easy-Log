@@ -19,7 +19,6 @@ Imports SharpShellEasyLog.Theming
 
 Namespace SharpShellEasyLog.Tests
 
-    ''' ----------------------------------------------------------------------------------------------------
     ''' <summary>
     ''' Tests for <see cref="FormMain"/>.
     ''' <para></para>
@@ -27,7 +26,6 @@ Namespace SharpShellEasyLog.Tests
     ''' and the SharpShell registry key in <c>HKEY_LOCAL_MACHINE</c> is never modified.
     ''' The user settings are never saved to disk.
     ''' </summary>
-    ''' ----------------------------------------------------------------------------------------------------
     <STATestClass>
     Public NotInheritable Class FormMainTests
 

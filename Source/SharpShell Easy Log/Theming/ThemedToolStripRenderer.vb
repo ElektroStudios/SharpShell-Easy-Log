@@ -16,42 +16,34 @@ Imports System.Drawing.Drawing2D
 
 Namespace SharpShellEasyLog.Theming
 
-    ''' ----------------------------------------------------------------------------------------------------
     ''' <summary>
     ''' A <see cref="ToolStripProfessionalRenderer"/> that paints menus and tool strips
     ''' using the colors of a <see cref="ThemePalette"/>.
     ''' <para></para>
     ''' It is intended for the dark theme; the light theme uses the default system renderer.
     ''' </summary>
-    ''' ----------------------------------------------------------------------------------------------------
     Public NotInheritable Class ThemedToolStripRenderer : Inherits ToolStripProfessionalRenderer
 
 #Region " Properties "
 
-        ''' ----------------------------------------------------------------------------------------------------
         ''' <summary>
         ''' Gets the palette used by this renderer.
         ''' </summary>
-        ''' ----------------------------------------------------------------------------------------------------
         Public ReadOnly Property Palette As ThemePalette
 
 #End Region
 
 #Region " Constructors "
 
-        ''' ----------------------------------------------------------------------------------------------------
         ''' <summary>
         ''' Initializes a new instance of the <see cref="ThemedToolStripRenderer"/> class.
         ''' </summary>
-        ''' ----------------------------------------------------------------------------------------------------
         ''' <param name="palette">
         ''' The palette used to paint the tool strips.
         ''' </param>
-        ''' ----------------------------------------------------------------------------------------------------
         ''' <exception cref="ArgumentNullException">
         ''' Thrown when <paramref name="palette"/> is <see langword="Nothing"/>.
         ''' </exception>
-        ''' ----------------------------------------------------------------------------------------------------
         <DebuggerStepThrough>
         Public Sub New(palette As ThemePalette)
 
@@ -65,15 +57,12 @@ Namespace SharpShellEasyLog.Theming
 
 #Region " Overridden Methods "
 
-        ''' ----------------------------------------------------------------------------------------------------
         ''' <summary>
         ''' Raises the <see cref="ToolStripRenderer.RenderItemText"/> event.
         ''' </summary>
-        ''' ----------------------------------------------------------------------------------------------------
         ''' <param name="e">
         ''' A <see cref="ToolStripItemTextRenderEventArgs"/> that contains the event data.
         ''' </param>
-        ''' ----------------------------------------------------------------------------------------------------
         Protected Overrides Sub OnRenderItemText(e As ToolStripItemTextRenderEventArgs)
 
             e.TextColor = If(e.Item.Enabled, Me.Palette.WindowForeColor, Me.Palette.DisabledForeColor)
@@ -81,15 +70,12 @@ Namespace SharpShellEasyLog.Theming
 
         End Sub
 
-        ''' ----------------------------------------------------------------------------------------------------
         ''' <summary>
         ''' Raises the <see cref="ToolStripRenderer.RenderArrow"/> event.
         ''' </summary>
-        ''' ----------------------------------------------------------------------------------------------------
         ''' <param name="e">
         ''' A <see cref="ToolStripArrowRenderEventArgs"/> that contains the event data.
         ''' </param>
-        ''' ----------------------------------------------------------------------------------------------------
         Protected Overrides Sub OnRenderArrow(e As ToolStripArrowRenderEventArgs)
 
             e.ArrowColor = If(e.Item Is Nothing OrElse e.Item.Enabled, Me.Palette.WindowForeColor, Me.Palette.DisabledForeColor)
@@ -97,17 +83,14 @@ Namespace SharpShellEasyLog.Theming
 
         End Sub
 
-        ''' ----------------------------------------------------------------------------------------------------
         ''' <summary>
         ''' Raises the <see cref="ToolStripRenderer.RenderItemCheck"/> event.
         ''' <para></para>
         ''' The default check mark glyph is black, so it is drawn manually to remain visible over dark backgrounds.
         ''' </summary>
-        ''' ----------------------------------------------------------------------------------------------------
         ''' <param name="e">
         ''' A <see cref="ToolStripItemImageRenderEventArgs"/> that contains the event data.
         ''' </param>
-        ''' ----------------------------------------------------------------------------------------------------
         Protected Overrides Sub OnRenderItemCheck(e As ToolStripItemImageRenderEventArgs)
 
             Dim rect As Rectangle = e.ImageRectangle
@@ -140,29 +123,23 @@ Namespace SharpShellEasyLog.Theming
 
 #Region " ThemedColorTable "
 
-        ''' ----------------------------------------------------------------------------------------------------
         ''' <summary>
         ''' A <see cref="ProfessionalColorTable"/> that returns the colors of a <see cref="ThemePalette"/>.
         ''' </summary>
-        ''' ----------------------------------------------------------------------------------------------------
         Private NotInheritable Class ThemedColorTable : Inherits ProfessionalColorTable
 
             ''' <summary>The palette.</summary>
             Private ReadOnly palette As ThemePalette
 
-            ''' ----------------------------------------------------------------------------------------------------
             ''' <summary>
             ''' Initializes a new instance of the <see cref="ThemedColorTable"/> class.
             ''' </summary>
-            ''' ----------------------------------------------------------------------------------------------------
             ''' <param name="palette">
             ''' The palette.
             ''' </param>
-            ''' ----------------------------------------------------------------------------------------------------
             ''' <exception cref="ArgumentNullException">
             ''' Thrown when <paramref name="palette"/> is <see langword="Nothing"/>.
             ''' </exception>
-            ''' ----------------------------------------------------------------------------------------------------
             <DebuggerStepThrough>
             Friend Sub New(palette As ThemePalette)
 

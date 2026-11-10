@@ -17,11 +17,9 @@ Imports SharpShellEasyLog.UserControls
 
 Namespace SharpShellEasyLog.Tests.UserControls
 
-    ''' ----------------------------------------------------------------------------------------------------
     ''' <summary>
     ''' Tests for <see cref="ThemedGroupBox"/> and <see cref="ThemedTabControl"/>.
     ''' </summary>
-    ''' ----------------------------------------------------------------------------------------------------
     <STATestClass>
     Public NotInheritable Class ThemedControlsTests
 

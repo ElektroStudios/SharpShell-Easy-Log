@@ -16,7 +16,6 @@ Imports System.Text
 
 Namespace SharpShellEasyLog.Core
 
-    ''' ----------------------------------------------------------------------------------------------------
     ''' <summary>
     ''' Incrementally reads the new content appended to a (UTF-8 or ASCII) log file,
     ''' similar to the Unix <c>tail -f</c> command.
@@ -24,41 +23,32 @@ Namespace SharpShellEasyLog.Core
     ''' The file is opened with <see cref="FileShare.ReadWrite"/> and <see cref="FileShare.Delete"/> sharing,
     ''' so it can be read while another process is writing to it.
     ''' </summary>
-    ''' ----------------------------------------------------------------------------------------------------
     Public NotInheritable Class LogFileTailReader
 
 #Region " Private Fields "
 
-        ''' ----------------------------------------------------------------------------------------------------
         ''' <summary>
         ''' The UTF-8 byte order mark.
         ''' </summary>
-        ''' ----------------------------------------------------------------------------------------------------
         Private Shared ReadOnly Utf8Preamble As Byte() = {&HEF, &HBB, &HBF}
 
-        ''' ----------------------------------------------------------------------------------------------------
         ''' <summary>
         ''' The encoding used to decode the log file content.
         ''' </summary>
-        ''' ----------------------------------------------------------------------------------------------------
         Private Shared ReadOnly ContentEncoding As Encoding = New UTF8Encoding(encoderShouldEmitUTF8Identifier:=False, throwOnInvalidBytes:=False)
 
 #End Region
 
 #Region " Properties "
 
-        ''' ----------------------------------------------------------------------------------------------------
         ''' <summary>
         ''' Gets the full path of the log file being read.
         ''' </summary>
-        ''' ----------------------------------------------------------------------------------------------------
         Public ReadOnly Property FilePath As String
 
-        ''' ----------------------------------------------------------------------------------------------------
         ''' <summary>
         ''' Gets the byte position in the log file up to which the content has already been read.
         ''' </summary>
-        ''' ----------------------------------------------------------------------------------------------------
         Public ReadOnly Property Position As Long
             <DebuggerStepThrough>
             Get
@@ -68,7 +58,6 @@ Namespace SharpShellEasyLog.Core
         ''' <summary>(Backing field) <see cref="LogFileTailReader.Position"/></summary>
         Private positionField As Long
 
-        ''' ----------------------------------------------------------------------------------------------------
         ''' <summary>
         ''' Gets a value indicating whether only complete lines (terminated by a line feed character) are returned.
         ''' <para></para>
@@ -76,32 +65,26 @@ Namespace SharpShellEasyLog.Core
         ''' until its line terminator is written. This also guarantees that multi-byte UTF-8 characters
         ''' are never split between two reads.
         ''' </summary>
-        ''' ----------------------------------------------------------------------------------------------------
         Public ReadOnly Property CompleteLinesOnly As Boolean
 
 #End Region
 
 #Region " Constructors "
 
-        ''' ----------------------------------------------------------------------------------------------------
         ''' <summary>
         ''' Initializes a new instance of the <see cref="LogFileTailReader"/> class.
         ''' </summary>
-        ''' ----------------------------------------------------------------------------------------------------
         ''' <param name="filePath">
         ''' The path of the log file to read. The file does not need to exist yet.
         ''' </param>
-        ''' ----------------------------------------------------------------------------------------------------
         ''' <param name="completeLinesOnly">
         ''' A value indicating whether only complete lines are returned.
         ''' See <see cref="LogFileTailReader.CompleteLinesOnly"/>.
         ''' </param>
-        ''' ----------------------------------------------------------------------------------------------------
         ''' <exception cref="ArgumentException">
         ''' Thrown when <paramref name="filePath"/> is <see langword="Nothing"/>, empty, white space,
         ''' or it is not a valid file path.
         ''' </exception>
-        ''' ----------------------------------------------------------------------------------------------------
         <DebuggerStepThrough>
         Public Sub New(filePath As String, Optional completeLinesOnly As Boolean = True)
 
@@ -127,22 +110,18 @@ Namespace SharpShellEasyLog.Core
 
 #Region " Public Methods "
 
-        ''' ----------------------------------------------------------------------------------------------------
         ''' <summary>
         ''' Reads the content appended to the log file since the last read.
         ''' <para></para>
         ''' If the file was truncated or re-created (its length is lower than <see cref="LogFileTailReader.Position"/>),
         ''' the file is read again from the beginning.
         ''' </summary>
-        ''' ----------------------------------------------------------------------------------------------------
         ''' <returns>
         ''' The new content, or <see cref="String.Empty"/> if there is no new content or the file does not exist.
         ''' </returns>
-        ''' ----------------------------------------------------------------------------------------------------
         ''' <exception cref="IOException">
         ''' Thrown when the file cannot be opened because another process locked it without read sharing.
         ''' </exception>
-        ''' ----------------------------------------------------------------------------------------------------
         <DebuggerStepperBoundary>
         Public Function ReadNewContent() As String
 
@@ -205,12 +184,10 @@ Namespace SharpShellEasyLog.Core
 
         End Function
 
-        ''' ----------------------------------------------------------------------------------------------------
         ''' <summary>
         ''' Resets the read position, so the next call to <see cref="LogFileTailReader.ReadNewContent"/>
         ''' reads the whole file from the beginning.
         ''' </summary>
-        ''' ----------------------------------------------------------------------------------------------------
         <DebuggerStepThrough>
         Public Sub Reset()
 
@@ -218,12 +195,10 @@ Namespace SharpShellEasyLog.Core
 
         End Sub
 
-        ''' ----------------------------------------------------------------------------------------------------
         ''' <summary>
         ''' Moves the read position to the current end of the log file,
         ''' so the existing content is skipped and only content appended afterwards is returned.
         ''' </summary>
-        ''' ----------------------------------------------------------------------------------------------------
         <DebuggerStepperBoundary>
         Public Sub SeekToEnd()
 
@@ -235,23 +210,18 @@ Namespace SharpShellEasyLog.Core
 
 #Region " Private Methods "
 
-        ''' ----------------------------------------------------------------------------------------------------
         ''' <summary>
         ''' Determines whether the specified buffer starts with the UTF-8 byte order mark.
         ''' </summary>
-        ''' ----------------------------------------------------------------------------------------------------
         ''' <param name="buffer">
         ''' The buffer.
         ''' </param>
-        ''' ----------------------------------------------------------------------------------------------------
         ''' <param name="count">
         ''' The number of valid bytes in <paramref name="buffer"/>.
         ''' </param>
-        ''' ----------------------------------------------------------------------------------------------------
         ''' <returns>
         ''' <see langword="True"/> if the buffer starts with the UTF-8 byte order mark; otherwise, <see langword="False"/>.
         ''' </returns>
-        ''' ----------------------------------------------------------------------------------------------------
         <DebuggerStepThrough>
         Private Shared Function StartsWithUtf8Preamble(buffer As Byte(), count As Integer) As Boolean
 

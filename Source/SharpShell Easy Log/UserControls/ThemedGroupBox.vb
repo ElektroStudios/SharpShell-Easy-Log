@@ -16,36 +16,30 @@ Imports SharpShellEasyLog.Theming
 
 Namespace SharpShellEasyLog.UserControls
 
-    ''' ----------------------------------------------------------------------------------------------------
     ''' <summary>
     ''' A <see cref="GroupBox"/> that paints its border and caption using the colors of a <see cref="ThemePalette"/>.
     ''' <para></para>
     ''' With a light palette (or when no palette is applied) the control is painted
     ''' exactly like a standard <see cref="GroupBox"/>.
     ''' </summary>
-    ''' ----------------------------------------------------------------------------------------------------
     <DesignerCategory("Code")>
     <ToolboxBitmap(GetType(GroupBox))>
     Public Class ThemedGroupBox : Inherits GroupBox : Implements IThemeableControl
 
 #Region " Properties "
 
-        ''' ----------------------------------------------------------------------------------------------------
         ''' <summary>
         ''' Gets the palette currently applied to the control,
         ''' or <see langword="Nothing"/> if no palette was applied yet.
         ''' </summary>
-        ''' ----------------------------------------------------------------------------------------------------
         <Browsable(False)>
         <DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)>
         Public ReadOnly Property Palette As ThemePalette Implements IThemeableControl.Palette
 
-        ''' ----------------------------------------------------------------------------------------------------
         ''' <summary>
         ''' Gets a value indicating whether the control is currently custom painted
         ''' (that is, a dark palette is applied).
         ''' </summary>
-        ''' ----------------------------------------------------------------------------------------------------
         <Browsable(False)>
         <DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)>
         Public ReadOnly Property IsCustomPainted As Boolean
@@ -59,19 +53,15 @@ Namespace SharpShellEasyLog.UserControls
 
 #Region " Public Methods "
 
-        ''' ----------------------------------------------------------------------------------------------------
         ''' <summary>
         ''' Applies the specified palette to the control.
         ''' </summary>
-        ''' ----------------------------------------------------------------------------------------------------
         ''' <param name="palette">
         ''' The palette to apply.
         ''' </param>
-        ''' ----------------------------------------------------------------------------------------------------
         ''' <exception cref="ArgumentNullException">
         ''' Thrown when <paramref name="palette"/> is <see langword="Nothing"/>.
         ''' </exception>
-        ''' ----------------------------------------------------------------------------------------------------
         <DebuggerStepperBoundary>
         Public Sub ApplyTheme(palette As ThemePalette) Implements IThemeableControl.ApplyTheme
 
@@ -95,15 +85,12 @@ Namespace SharpShellEasyLog.UserControls
 
 #Region " Overridden Methods "
 
-        ''' ----------------------------------------------------------------------------------------------------
         ''' <summary>
         ''' Raises the <see cref="Control.Paint"/> event.
         ''' </summary>
-        ''' ----------------------------------------------------------------------------------------------------
         ''' <param name="e">
         ''' A <see cref="PaintEventArgs"/> that contains the event data.
         ''' </param>
-        ''' ----------------------------------------------------------------------------------------------------
         Protected Overrides Sub OnPaint(e As PaintEventArgs)
 
             If Not Me.IsCustomPainted Then
@@ -147,15 +134,12 @@ Namespace SharpShellEasyLog.UserControls
 
         End Sub
 
-        ''' ----------------------------------------------------------------------------------------------------
         ''' <summary>
         ''' Raises the <see cref="Control.EnabledChanged"/> event.
         ''' </summary>
-        ''' ----------------------------------------------------------------------------------------------------
         ''' <param name="e">
         ''' An <see cref="EventArgs"/> that contains the event data.
         ''' </param>
-        ''' ----------------------------------------------------------------------------------------------------
         Protected Overrides Sub OnEnabledChanged(e As EventArgs)
 
             MyBase.OnEnabledChanged(e)
