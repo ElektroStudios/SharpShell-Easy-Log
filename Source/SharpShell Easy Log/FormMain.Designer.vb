@@ -23,32 +23,36 @@ Partial Class FormMain : Inherits System.Windows.Forms.Form
     Private Sub InitializeComponent()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(FormMain))
         Me.TextBoxLogFile = New System.Windows.Forms.TextBox()
-        Me.RadioButtonLoggingEnable = New System.Windows.Forms.RadioButton()
-        Me.RadioButtonLoggingDisable = New System.Windows.Forms.RadioButton()
-        Me.TabControlMain = New System.Windows.Forms.TabControl()
+        Me.RadioButtonLoggingEnable = New SharpShellEasyLog.UserControls.ThemedRadioButton()
+        Me.RadioButtonLoggingDisable = New SharpShellEasyLog.UserControls.ThemedRadioButton()
+        Me.TabControlMain = New SharpShellEasyLog.UserControls.ThemedTabControl()
         Me.TabPageSettings = New System.Windows.Forms.TabPage()
-        Me.GroupBoxLogFile = New System.Windows.Forms.GroupBox()
-        Me.ButtonLogFilePath = New System.Windows.Forms.Button()
+        Me.GroupBoxLogFile = New SharpShellEasyLog.UserControls.ThemedGroupBox()
+        Me.ButtonLogFilePath = New SharpShellEasyLog.UserControls.ThemedButton()
         Me.TextBoxLogFilePath = New System.Windows.Forms.TextBox()
-        Me.LabelLogFilePath = New System.Windows.Forms.Label()
-        Me.GroupBoxMode = New System.Windows.Forms.GroupBox()
-        Me.RadioButtonModeAll = New System.Windows.Forms.RadioButton()
-        Me.RadioButtonModeLogFile = New System.Windows.Forms.RadioButton()
-        Me.RadioButtonModeWindowsEventLog = New System.Windows.Forms.RadioButton()
-        Me.RadioButtonModeDebug = New System.Windows.Forms.RadioButton()
-        Me.GroupBoxLogging = New System.Windows.Forms.GroupBox()
+        Me.LabelLogFilePath = New SharpShellEasyLog.UserControls.ThemedLabel()
+        Me.GroupBoxMode = New SharpShellEasyLog.UserControls.ThemedGroupBox()
+        Me.RadioButtonModeAll = New SharpShellEasyLog.UserControls.ThemedRadioButton()
+        Me.RadioButtonModeLogFile = New SharpShellEasyLog.UserControls.ThemedRadioButton()
+        Me.RadioButtonModeWindowsEventLog = New SharpShellEasyLog.UserControls.ThemedRadioButton()
+        Me.RadioButtonModeDebug = New SharpShellEasyLog.UserControls.ThemedRadioButton()
+        Me.GroupBoxLogging = New SharpShellEasyLog.UserControls.ThemedGroupBox()
         Me.TabPageLogOutput = New System.Windows.Forms.TabPage()
         Me.TableLayoutPanel1 = New System.Windows.Forms.TableLayoutPanel()
-        Me.GroupBoxActions = New System.Windows.Forms.GroupBox()
-        Me.ButtonOpenFile = New System.Windows.Forms.Button()
-        Me.ButtonClearText = New System.Windows.Forms.Button()
-        Me.ButtonCopyText = New System.Windows.Forms.Button()
+        Me.GroupBoxActions = New SharpShellEasyLog.UserControls.ThemedGroupBox()
+        Me.ButtonOpenFile = New SharpShellEasyLog.UserControls.ThemedButton()
+        Me.ButtonClearText = New SharpShellEasyLog.UserControls.ThemedButton()
+        Me.ButtonCopyText = New SharpShellEasyLog.UserControls.ThemedButton()
         Me.MenuStrip1 = New System.Windows.Forms.MenuStrip()
         Me.ToolsToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.DebugViewToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.WindowsEventViewerToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.ExplorerToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.RestartToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
-        Me.WindowsEventViewerToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
-        Me.DebugViewToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.ViewToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.DarkThemeToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.ToolStripThemeToggle = New SharpShellEasyLog.UserControls.ToolStripToggleSwitch()
+        Me.ToolStripThemeLabel = New System.Windows.Forms.ToolStripLabel()
         Me.TabControlMain.SuspendLayout()
         Me.TabPageSettings.SuspendLayout()
         Me.GroupBoxLogFile.SuspendLayout()
@@ -310,7 +314,7 @@ Partial Class FormMain : Inherits System.Windows.Forms.Form
         '
         'MenuStrip1
         '
-        Me.MenuStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ToolsToolStripMenuItem})
+        Me.MenuStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ToolsToolStripMenuItem, Me.ViewToolStripMenuItem, Me.ToolStripThemeToggle, Me.ToolStripThemeLabel})
         Me.MenuStrip1.Location = New System.Drawing.Point(0, 0)
         Me.MenuStrip1.Name = "MenuStrip1"
         Me.MenuStrip1.Size = New System.Drawing.Size(672, 24)
@@ -321,36 +325,70 @@ Partial Class FormMain : Inherits System.Windows.Forms.Form
         '
         Me.ToolsToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.DebugViewToolStripMenuItem, Me.WindowsEventViewerToolStripMenuItem, Me.ExplorerToolStripMenuItem})
         Me.ToolsToolStripMenuItem.Name = "ToolsToolStripMenuItem"
-        Me.ToolsToolStripMenuItem.Size = New System.Drawing.Size(47, 20)
+        Me.ToolsToolStripMenuItem.Size = New System.Drawing.Size(46, 20)
         Me.ToolsToolStripMenuItem.Text = "Tools"
+        '
+        'DebugViewToolStripMenuItem
+        '
+        Me.DebugViewToolStripMenuItem.Image = Global.My.Resources.Resources.DbgviewIcon
+        Me.DebugViewToolStripMenuItem.Name = "DebugViewToolStripMenuItem"
+        Me.DebugViewToolStripMenuItem.Size = New System.Drawing.Size(193, 22)
+        Me.DebugViewToolStripMenuItem.Text = "DebugView"
+        '
+        'WindowsEventViewerToolStripMenuItem
+        '
+        Me.WindowsEventViewerToolStripMenuItem.Image = Global.My.Resources.Resources.EventVwrIcon
+        Me.WindowsEventViewerToolStripMenuItem.Name = "WindowsEventViewerToolStripMenuItem"
+        Me.WindowsEventViewerToolStripMenuItem.Size = New System.Drawing.Size(193, 22)
+        Me.WindowsEventViewerToolStripMenuItem.Text = "Windows Event Viewer"
         '
         'ExplorerToolStripMenuItem
         '
         Me.ExplorerToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.RestartToolStripMenuItem})
         Me.ExplorerToolStripMenuItem.Image = Global.My.Resources.Resources.ExplorerIcon
         Me.ExplorerToolStripMenuItem.Name = "ExplorerToolStripMenuItem"
-        Me.ExplorerToolStripMenuItem.Size = New System.Drawing.Size(192, 22)
+        Me.ExplorerToolStripMenuItem.Size = New System.Drawing.Size(193, 22)
         Me.ExplorerToolStripMenuItem.Text = "Explorer"
         '
         'RestartToolStripMenuItem
         '
         Me.RestartToolStripMenuItem.Name = "RestartToolStripMenuItem"
-        Me.RestartToolStripMenuItem.Size = New System.Drawing.Size(180, 22)
+        Me.RestartToolStripMenuItem.Size = New System.Drawing.Size(110, 22)
         Me.RestartToolStripMenuItem.Text = "Restart"
         '
-        'WindowsEventViewerToolStripMenuItem
+        'ViewToolStripMenuItem
         '
-        Me.WindowsEventViewerToolStripMenuItem.Image = Global.My.Resources.Resources.EventVwrIcon
-        Me.WindowsEventViewerToolStripMenuItem.Name = "WindowsEventViewerToolStripMenuItem"
-        Me.WindowsEventViewerToolStripMenuItem.Size = New System.Drawing.Size(192, 22)
-        Me.WindowsEventViewerToolStripMenuItem.Text = "Windows Event Viewer"
+        Me.ViewToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.DarkThemeToolStripMenuItem})
+        Me.ViewToolStripMenuItem.Name = "ViewToolStripMenuItem"
+        Me.ViewToolStripMenuItem.Size = New System.Drawing.Size(44, 20)
+        Me.ViewToolStripMenuItem.Text = "View"
         '
-        'DebugViewToolStripMenuItem
+        'DarkThemeToolStripMenuItem
         '
-        Me.DebugViewToolStripMenuItem.Image = Global.My.Resources.Resources.DbgviewIcon
-        Me.DebugViewToolStripMenuItem.Name = "DebugViewToolStripMenuItem"
-        Me.DebugViewToolStripMenuItem.Size = New System.Drawing.Size(192, 22)
-        Me.DebugViewToolStripMenuItem.Text = "DebugView"
+        Me.DarkThemeToolStripMenuItem.Name = "DarkThemeToolStripMenuItem"
+        Me.DarkThemeToolStripMenuItem.ShortcutKeys = CType((System.Windows.Forms.Keys.Control Or System.Windows.Forms.Keys.D), System.Windows.Forms.Keys)
+        Me.DarkThemeToolStripMenuItem.Size = New System.Drawing.Size(179, 22)
+        Me.DarkThemeToolStripMenuItem.Text = "Dark Theme"
+        Me.DarkThemeToolStripMenuItem.ToolTipText = "Switch between the light and the dark visual theme."
+        '
+        'ToolStripThemeToggle
+        '
+        Me.ToolStripThemeToggle.AccessibleName = "Dark Theme"
+        Me.ToolStripThemeToggle.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right
+        Me.ToolStripThemeToggle.AutoSize = False
+        Me.ToolStripThemeToggle.BackColor = System.Drawing.Color.Transparent
+        Me.ToolStripThemeToggle.Name = "ToolStripThemeToggle"
+        Me.ToolStripThemeToggle.Size = New System.Drawing.Size(38, 18)
+        Me.ToolStripThemeToggle.ToolTipText = "Switch between the light and the dark visual theme (Ctrl+D)."
+        Me.ToolStripThemeToggle.Visible = False
+        '
+        'ToolStripThemeLabel
+        '
+        Me.ToolStripThemeLabel.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right
+        Me.ToolStripThemeLabel.Name = "ToolStripThemeLabel"
+        Me.ToolStripThemeLabel.Size = New System.Drawing.Size(70, 17)
+        Me.ToolStripThemeLabel.Text = "Dark Theme"
+        Me.ToolStripThemeLabel.Visible = False
         '
         'FormMain
         '
@@ -383,30 +421,34 @@ Partial Class FormMain : Inherits System.Windows.Forms.Form
 
     End Sub
     Friend WithEvents TextBoxLogFile As TextBox
-    Friend WithEvents RadioButtonLoggingEnable As RadioButton
-    Friend WithEvents RadioButtonLoggingDisable As RadioButton
-    Friend WithEvents TabControlMain As TabControl
+    Friend WithEvents RadioButtonLoggingEnable As Global.SharpShellEasyLog.UserControls.ThemedRadioButton
+    Friend WithEvents RadioButtonLoggingDisable As Global.SharpShellEasyLog.UserControls.ThemedRadioButton
+    Friend WithEvents TabControlMain As Global.SharpShellEasyLog.UserControls.ThemedTabControl
     Friend WithEvents TabPageSettings As TabPage
-    Friend WithEvents GroupBoxLogFile As GroupBox
-    Friend WithEvents ButtonLogFilePath As Button
+    Friend WithEvents GroupBoxLogFile As Global.SharpShellEasyLog.UserControls.ThemedGroupBox
+    Friend WithEvents ButtonLogFilePath As Global.SharpShellEasyLog.UserControls.ThemedButton
     Friend WithEvents TextBoxLogFilePath As TextBox
-    Friend WithEvents LabelLogFilePath As Label
-    Friend WithEvents GroupBoxMode As GroupBox
-    Friend WithEvents RadioButtonModeAll As RadioButton
-    Friend WithEvents RadioButtonModeLogFile As RadioButton
-    Friend WithEvents RadioButtonModeWindowsEventLog As RadioButton
-    Friend WithEvents RadioButtonModeDebug As RadioButton
-    Friend WithEvents GroupBoxLogging As GroupBox
+    Friend WithEvents LabelLogFilePath As Global.SharpShellEasyLog.UserControls.ThemedLabel
+    Friend WithEvents GroupBoxMode As Global.SharpShellEasyLog.UserControls.ThemedGroupBox
+    Friend WithEvents RadioButtonModeAll As Global.SharpShellEasyLog.UserControls.ThemedRadioButton
+    Friend WithEvents RadioButtonModeLogFile As Global.SharpShellEasyLog.UserControls.ThemedRadioButton
+    Friend WithEvents RadioButtonModeWindowsEventLog As Global.SharpShellEasyLog.UserControls.ThemedRadioButton
+    Friend WithEvents RadioButtonModeDebug As Global.SharpShellEasyLog.UserControls.ThemedRadioButton
+    Friend WithEvents GroupBoxLogging As Global.SharpShellEasyLog.UserControls.ThemedGroupBox
     Friend WithEvents TabPageLogOutput As TabPage
-    Friend WithEvents ButtonOpenFile As Button
-    Friend WithEvents ButtonCopyText As Button
-    Friend WithEvents ButtonClearText As Button
+    Friend WithEvents ButtonOpenFile As Global.SharpShellEasyLog.UserControls.ThemedButton
+    Friend WithEvents ButtonCopyText As Global.SharpShellEasyLog.UserControls.ThemedButton
+    Friend WithEvents ButtonClearText As Global.SharpShellEasyLog.UserControls.ThemedButton
     Friend WithEvents TableLayoutPanel1 As TableLayoutPanel
-    Friend WithEvents GroupBoxActions As GroupBox
+    Friend WithEvents GroupBoxActions As Global.SharpShellEasyLog.UserControls.ThemedGroupBox
     Friend WithEvents MenuStrip1 As MenuStrip
     Friend WithEvents ToolsToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents DebugViewToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents ExplorerToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents RestartToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents WindowsEventViewerToolStripMenuItem As ToolStripMenuItem
+    Friend WithEvents ViewToolStripMenuItem As ToolStripMenuItem
+    Friend WithEvents DarkThemeToolStripMenuItem As ToolStripMenuItem
+    Friend WithEvents ToolStripThemeToggle As Global.SharpShellEasyLog.UserControls.ToolStripToggleSwitch
+    Friend WithEvents ToolStripThemeLabel As ToolStripLabel
 End Class
